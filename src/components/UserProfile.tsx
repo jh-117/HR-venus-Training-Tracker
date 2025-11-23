@@ -167,7 +167,7 @@ export function UserProfile({ isOpen, onClose }: UserProfileProps) {
               </Button>
             </div>
           </div>
-        </div>
+        
 
         <DialogFooter>
           <Button variant="ghost" onClick={onClose}>Close</Button>
