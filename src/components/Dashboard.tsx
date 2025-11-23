@@ -5,8 +5,11 @@ import {
   Plus,
   LayoutTemplate,
   PenTool,
-  AlertTriangle,
   Siren,
+  Archive,
+  Trash2,
+  User,
+  MoreVertical,
 } from "lucide-react";
 import {
   Activity,
@@ -23,7 +26,6 @@ import {
   DialogTitle,
   DialogDescription,
 } from "./ui/dialog";
-import { Archive, Trash2, User, MoreVertical } from 'lucide-react';
 import { UserProfile } from './UserProfile';
 import {
   DropdownMenu,
@@ -52,11 +54,6 @@ function getMostCriticalTask(
     activity.steps.forEach((step) => {
       if (step.status === "completed") return;
 
-      // Calculate score based on:
-      // 1. Overdue (High score)
-      // 2. Due soon (Medium score)
-      // 3. Risk Weight (Multiplier)
-
       const deadline = parseISO(step.deadline);
       const today = new Date();
       const daysUntil = differenceInDays(deadline, today);
@@ -64,14 +61,13 @@ function getMostCriticalTask(
       let score = 0;
 
       if (daysUntil < 0) {
-        score = 1000 + Math.abs(daysUntil) * 10; // Overdue gets highest priority
+        score = 1000 + Math.abs(daysUntil) * 10;
       } else if (daysUntil <= 3) {
-        score = 500 + (3 - daysUntil) * 10; // Due soon
+        score = 500 + (3 - daysUntil) * 10;
       } else {
-        score = 100 - daysUntil; // Far future gets low score
+        score = 100 - daysUntil;
       }
 
-      // Multiply by risk weight to prioritize important tasks
       score = score * step.riskWeight;
 
       if (score > highestScore) {
@@ -93,11 +89,12 @@ export function Dashboard({
   activities,
   onNewActivity,
   onSelectActivity,
+  onArchiveActivity,
+  onDeleteActivity,
 }: DashboardProps) {
-  const [isChoiceDialogOpen, setIsChoiceDialogOpen] =
-    useState(false);
+  const [isChoiceDialogOpen, setIsChoiceDialogOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
-const [showArchived, setShowArchived] = useState(false);
+  const [showArchived, setShowArchived] = useState(false);
   const critical = getMostCriticalTask(activities);
 
   const handleCreateChoice = (mode: "template" | "scratch") => {
@@ -106,45 +103,45 @@ const [showArchived, setShowArchived] = useState(false);
   };
 
   const handleArchiveActivity = async (activityId: string, archived: boolean) => {
-  if (onArchiveActivity) {
-    onArchiveActivity(activityId, archived);
-  }
-};
+    if (onArchiveActivity) {
+      onArchiveActivity(activityId, archived);
+    }
+  };
 
-const handleDeleteActivity = async (activityId: string) => {
-  if (!confirm('Are you sure you want to permanently delete this project? This cannot be undone.')) {
-    return;
-  }
-  if (onDeleteActivity) {
-    onDeleteActivity(activityId);
-  }
-};
-  
+  const handleDeleteActivity = async (activityId: string) => {
+    if (!confirm('Are you sure you want to permanently delete this project? This cannot be undone.')) {
+      return;
+    }
+    if (onDeleteActivity) {
+      onDeleteActivity(activityId);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">
       <header className="flex items-center justify-between border-b border-slate-800 bg-slate-900/50 px-6 py-4 backdrop-blur">
-  <div className="flex items-center gap-3">
-    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600/20 text-blue-500">
-      <Folder className="h-5 w-5" />
-    </div>
-    <div>
-      <h1 className="text-lg font-bold leading-none">HR Venus</h1>
-      <p className="text-xs text-slate-400">Training Action Tracker</p>
-    </div>
-  </div>
-  
-  <div className="flex items-center gap-2">
-    <Button
-      variant="ghost"
-      size="sm"
-      onClick={() => setIsProfileOpen(true)}
-      className="text-slate-400 hover:text-white"
-    >
-      <User className="h-4 w-4 mr-2" />
-      Profile
-    </Button>
-  </div>
-</header>
+        <div className="flex items-center gap-3">
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600/20 text-blue-500">
+            <Folder className="h-5 w-5" />
+          </div>
+          <div>
+            <h1 className="text-lg font-bold leading-none">HR Venus</h1>
+            <p className="text-xs text-slate-400">Training Action Tracker</p>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-2">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => setIsProfileOpen(true)}
+            className="text-slate-400 hover:text-white"
+          >
+            <User className="h-4 w-4 mr-2" />
+            Profile
+          </Button>
+        </div>
+      </header>
 
       <main className="container mx-auto max-w-5xl p-8 space-y-10">
         {/* Flashlight / Critical Spotlight */}
@@ -259,129 +256,171 @@ const handleDeleteActivity = async (activityId: string) => {
         ) : (
           <div className="space-y-6">
             <div className="flex items-center justify-between">
-  <div className="flex items-center gap-4">
-    <h2 className="text-xl font-semibold text-slate-200">
-      {showArchived ? 'Archived Projects' : 'Active Projects'}
-    </h2>
-    <Button
-      variant="ghost"
-      size="sm"
-      onClick={() => setShowArchived(!showArchived)}
-      className="text-slate-400 hover:text-slate-300"
-    >
-      {showArchived ? 'Show Active' : 'Show Archived'}
-    </Button>
-  </div>
-  <Button
-    onClick={() => setIsChoiceDialogOpen(true)}
-    className="bg-slate-800 hover:bg-slate-700 border border-slate-700"
-  >
-    <Plus className="h-4 w-4 mr-2" /> New Project
-  </Button>
-</div>
+              <div className="flex items-center gap-4">
+                <h2 className="text-xl font-semibold text-slate-200">
+                  {showArchived ? 'Archived Projects' : 'Active Projects'}
+                </h2>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setShowArchived(!showArchived)}
+                  className="text-slate-400 hover:text-slate-300"
+                >
+                  {showArchived ? 'Show Active' : 'Show Archived'}
+                </Button>
+              </div>
+              <Button
+                onClick={() => setIsChoiceDialogOpen(true)}
+                className="bg-slate-800 hover:bg-slate-700 border border-slate-700"
+              >
+                <Plus className="h-4 w-4 mr-2" /> New Project
+              </Button>
+            </div>
+
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {activities
-  .filter(a => showArchived ? a.archived : !a.archived)
-  .map((activity) => {
-                const completed = activity.steps.filter(
-                  (s) => s.status === "completed",
-                ).length;
-                const total = Math.max(
-                  activity.steps.length,
-                  1,
-                );
-                const percent = Math.round(
-                  (completed / total) * 100,
-                );
+                .filter(a => showArchived ? a.archived : !a.archived)
+                .map((activity) => {
+                  const completed = activity.steps.filter(
+                    (s) => s.status === "completed",
+                  ).length;
+                  const total = Math.max(activity.steps.length, 1);
+                  const percent = Math.round((completed / total) * 100);
 
-                return (
-                  <div
-                    key={activity.id}
-                    className="group flex flex-col justify-between rounded-xl border border-slate-800 bg-slate-900 p-6 hover:border-blue-500/50 transition-all cursor-pointer shadow-sm"
-                    onClick={() => onSelectActivity(activity)}
-                  >
-                    <div>
-                      <div className="flex items-start justify-between mb-4">
-                        <div className="h-10 w-10 rounded-lg bg-blue-900/20 text-blue-400 flex items-center justify-center">
-                          <Folder className="h-5 w-5" />
-                        </div>
-                        <div className="text-right">
-                          <span className="block text-2xl font-bold text-slate-200">
-                            {percent}%
-                          </span>
-                          <span className="text-[10px] text-slate-500 uppercase tracking-wider">
-                            Readiness
-                          </span>
-                        </div>
+                  return (
+                    <div
+                      key={activity.id}
+                      className="group relative flex flex-col justify-between rounded-xl border border-slate-800 bg-slate-900 p-6 hover:border-blue-500/50 transition-all shadow-sm"
+                    >
+                      {/* Dropdown Menu */}
+                      <div className="absolute top-4 right-4 z-10">
+                        <DropdownMenu>
+                          <DropdownMenuTrigger asChild>
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              className="h-8 w-8 text-slate-400 hover:text-slate-200"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              <MoreVertical className="h-4 w-4" />
+                            </Button>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent className="bg-slate-900 border-slate-800">
+                            <DropdownMenuItem
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                onSelectActivity(activity);
+                              }}
+                              className="text-slate-300 hover:text-white focus:bg-slate-800 focus:text-white"
+                            >
+                              Open Project
+                            </DropdownMenuItem>
+                            <DropdownMenuSeparator className="bg-slate-800" />
+                            <DropdownMenuItem
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleArchiveActivity(activity.id, !activity.archived);
+                              }}
+                              className="text-slate-300 hover:text-white focus:bg-slate-800 focus:text-white"
+                            >
+                              <Archive className="h-4 w-4 mr-2" />
+                              {activity.archived ? 'Unarchive' : 'Archive'}
+                            </DropdownMenuItem>
+                            <DropdownMenuItem
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleDeleteActivity(activity.id);
+                              }}
+                              className="text-red-400 hover:text-red-300 focus:bg-slate-800 focus:text-red-300"
+                            >
+                              <Trash2 className="h-4 w-4 mr-2" />
+                              Delete
+                            </DropdownMenuItem>
+                          </DropdownMenuContent>
+                        </DropdownMenu>
                       </div>
-                      <h3 className="font-medium text-slate-200 text-lg mb-1 group-hover:text-blue-400 transition-colors">
-                        {activity.title}
-                      </h3>
-                      <div className="flex items-center gap-4 text-xs text-slate-500 mb-6">
-                        <span>Start: {activity.startDate}</span>
-                        <span>End: {activity.deadline}</span>
+
+                      {/* Clickable Card Content */}
+                      <div
+                        className="cursor-pointer"
+                        onClick={() => onSelectActivity(activity)}
+                      >
+                        <div>
+                          <div className="flex items-start justify-between mb-4 pr-8">
+                            <div className="h-10 w-10 rounded-lg bg-blue-900/20 text-blue-400 flex items-center justify-center">
+                              <Folder className="h-5 w-5" />
+                            </div>
+                            <div className="text-right">
+                              <span className="block text-2xl font-bold text-slate-200">
+                                {percent}%
+                              </span>
+                              <span className="text-[10px] text-slate-500 uppercase tracking-wider">
+                                Readiness
+                              </span>
+                            </div>
+                          </div>
+                          <h3 className="font-medium text-slate-200 text-lg mb-1 group-hover:text-blue-400 transition-colors">
+                            {activity.title}
+                          </h3>
+                          <div className="flex items-center gap-4 text-xs text-slate-500 mb-6">
+                            <span>Start: {activity.startDate}</span>
+                            <span>End: {activity.deadline}</span>
+                          </div>
+                        </div>
+
+                        {/* Phase Breakdown */}
+                        <div className="space-y-2">
+                          <div className="flex justify-between text-[10px] text-slate-500 uppercase tracking-wider">
+                            <span>Phase Progress</span>
+                            <span>8 Phases</span>
+                          </div>
+                          <div className="flex gap-1 h-2">
+                            {STANDARD_PHASES.map((phase) => {
+                              const phaseSteps = activity.steps.filter(
+                                (s) => s.phaseId === phase.id,
+                              );
+                              const isPhaseComplete =
+                                phaseSteps.length > 0 &&
+                                phaseSteps.every(
+                                  (s) => s.status === "completed",
+                                );
+                              const hasRisk = phaseSteps.some(
+                                (s) => getRiskLevel(s) === "high",
+                              );
+
+                              return (
+                                <div
+                                  key={phase.id}
+                                  className={cn(
+                                    "flex-1 rounded-full transition-colors",
+                                    isPhaseComplete
+                                      ? "bg-emerald-500"
+                                      : hasRisk
+                                        ? "bg-red-500"
+                                        : "bg-slate-800",
+                                  )}
+                                  title={`${phase.title}: ${isPhaseComplete ? "Complete" : "Pending"}`}
+                                />
+                              );
+                            })}
+                          </div>
+                        </div>
                       </div>
                     </div>
-
-                    {/* Phase Breakdown */}
-                    <div className="space-y-2">
-                      <div className="flex justify-between text-[10px] text-slate-500 uppercase tracking-wider">
-                        <span>Phase Progress</span>
-                        <span>8 Phases</span>
-                      </div>
-                      <div className="flex gap-1 h-2">
-                        {STANDARD_PHASES.map((phase) => {
-                          const phaseSteps =
-                            activity.steps.filter(
-                              (s) => s.phaseId === phase.id,
-                            );
-                          const isPhaseComplete =
-                            phaseSteps.length > 0 &&
-                            phaseSteps.every(
-                              (s) => s.status === "completed",
-                            );
-                          const hasRisk = phaseSteps.some(
-                            (s) => getRiskLevel(s) === "high",
-                          );
-
-                          return (
-                            <div
-                              key={phase.id}
-                              className={cn(
-                                "flex-1 rounded-full transition-colors",
-                                isPhaseComplete
-                                  ? "bg-emerald-500"
-                                  : hasRisk
-                                    ? "bg-red-500"
-                                    : "bg-slate-800",
-                              )}
-                              title={`${phase.title}: ${isPhaseComplete ? "Complete" : "Pending"}`}
-                            />
-                          );
-                        })}
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
             </div>
           </div>
         )}
       </main>
 
       {/* Choice Dialog for New Project */}
-      <Dialog
-        open={isChoiceDialogOpen}
-        onOpenChange={setIsChoiceDialogOpen}
-      >
+      <Dialog open={isChoiceDialogOpen} onOpenChange={setIsChoiceDialogOpen}>
         <DialogContent className="bg-slate-900 border-slate-800 text-slate-100 sm:max-w-2xl">
           <DialogHeader>
-            <DialogTitle className="text-2xl">
-              Create New Project
-            </DialogTitle>
+            <DialogTitle className="text-2xl">Create New Project</DialogTitle>
             <DialogDescription className="text-slate-400">
-              Choose how you'd like to start your training
-              project.
+              Choose how you'd like to start your training project.
             </DialogDescription>
           </DialogHeader>
 
@@ -397,9 +436,7 @@ const handleDeleteActivity = async (activityId: string) => {
                 Use 80-Step Template
               </h3>
               <p className="text-slate-400 text-sm leading-relaxed">
-                Comprehensive training program with all 8
-                phases, HRD Corp workflows, and standard
-                checklists.
+                Comprehensive training program with all 8 phases, HRD Corp workflows, and standard checklists.
               </p>
               <div className="mt-4 flex items-center text-blue-400 text-sm font-medium">
                 Select &rarr;
@@ -417,8 +454,7 @@ const handleDeleteActivity = async (activityId: string) => {
                 Start from Scratch
               </h3>
               <p className="text-slate-400 text-sm leading-relaxed">
-                Build your own workflow step-by-step. Good for
-                simple workshops or non-standard events.
+                Build your own workflow step-by-step. Good for simple workshops or non-standard events.
               </p>
               <div className="mt-4 flex items-center text-emerald-400 text-sm font-medium">
                 Select &rarr;
@@ -427,6 +463,9 @@ const handleDeleteActivity = async (activityId: string) => {
           </div>
         </DialogContent>
       </Dialog>
+
+      {/* User Profile Modal */}
+      <UserProfile isOpen={isProfileOpen} onClose={() => setIsProfileOpen(false)} />
     </div>
   );
 }
