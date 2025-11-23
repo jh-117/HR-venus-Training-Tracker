@@ -293,7 +293,7 @@ export function Dashboard({
                       className="group relative flex flex-col justify-between rounded-xl border border-slate-800 bg-slate-900 p-6 hover:border-blue-500/50 transition-all shadow-sm"
                     >
                       {/* Dropdown Menu */}
-                      <div className="absolute top-4 right-4 z-10">
+                      <div className="absolute top-4 right-3 z-10">
                         <DropdownMenu>
                           <DropdownMenuTrigger asChild>
                             <Button
@@ -346,8 +346,7 @@ export function Dashboard({
                         onClick={() => onSelectActivity(activity)}
                       >
                         <div>
-                          <div className="flex items-start justify-between mb-4 pr-20
-                            ">
+                          <div className="flex items-start justify-between mb-4 pr-16">
                             <div className="h-10 w-10 rounded-lg bg-blue-900/20 text-blue-400 flex items-center justify-center">
                               <Folder className="h-5 w-5" />
                             </div>
