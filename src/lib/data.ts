@@ -186,7 +186,8 @@ export function generateActivity(title: string, startDate: Date, deadlineDate: D
 
         return {
             ...step,
-            activityId,
+            id: crypto.randomUUID(), // Generate new UUID instead of using template ID
+        activityId,
             deadline: format(stepDeadline, 'yyyy-MM-dd'),
             status: 'not_started',
             value: undefined
