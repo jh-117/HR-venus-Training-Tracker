@@ -161,7 +161,7 @@ export function UserProfile({ isOpen, onClose }: UserProfileProps) {
               <Button
                 variant="destructive"
                 onClick={handleDeleteAccount}
-                className="w-full bg-red-600 hover:bg-red-700"
+                className="w-full bg-red-600 hover:bg-red-700 text-white"
               >
                 Delete Account & All Data
               </Button>
