@@ -252,20 +252,7 @@ export default function App() {
 
   return (
     <div className="relative">
-      {/* Logout button */}
-      {!currentActivity && (
-        <div className="absolute top-4 right-4 z-50">
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={signOut}
-            className="text-slate-400 hover:text-white"
-          >
-            <LogOut className="h-4 w-4 mr-2" />
-            Logout
-          </Button>
-        </div>
-      )}
+      
 
       {currentActivity ? (
         <TrackerBoard
