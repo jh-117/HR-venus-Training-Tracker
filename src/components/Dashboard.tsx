@@ -280,7 +280,9 @@ const handleDeleteActivity = async (activityId: string) => {
   </Button>
 </div>
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {activities.map((activity) => {
+              {activities
+  .filter(a => showArchived ? a.archived : !a.archived)
+  .map((activity) => {
                 const completed = activity.steps.filter(
                   (s) => s.status === "completed",
                 ).length;
