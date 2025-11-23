@@ -280,6 +280,8 @@ const handleDeleteActivity = async (activityId: string) => {
           activities={activities}
           onNewActivity={handleNewActivity}
           onSelectActivity={setCurrentActivity}
+          onArchiveActivity={handleArchiveActivity}
+          onDeleteActivity={handleDeleteActivity}
         />
       )}
 
