@@ -342,32 +342,31 @@ export function Dashboard({
 
                       {/* Clickable Card Content */}
                       <div
-                        className="cursor-pointer"
-                        onClick={() => onSelectActivity(activity)}
-                      >
-                        <div>
-                          <div className="flex items-start justify-between mb-4 pr-20">
-                            <div className="h-10 w-10 rounded-lg bg-blue-900/20 text-blue-400 flex items-center justify-center">
-                              <Folder className="h-5 w-5" />
-                            </div>
-                            <div className="text-right">
-                              <span className="block text-2xl font-bold text-slate-200">
-                                {percent}%
-                              </span>
-                              <span className="text-[10px] text-slate-500 uppercase tracking-wider">
-                                Readiness
-                              </span>
-                            </div>
-                          </div>
-                          <h3 className="font-medium text-slate-200 text-lg mb-1 group-hover:text-blue-400 transition-colors">
-                            {activity.title}
-                          </h3>
-                          <div className="flex items-center gap-4 text-xs text-slate-500 mb-6">
-                            <span>Start: {activity.startDate}</span>
-                            <span>End: {activity.deadline}</span>
-                          </div>
-                        </div>
-
+  className="cursor-pointer"
+  onClick={() => onSelectActivity(activity)}
+>
+  <div>
+    <div className="flex items-start justify-between mb-4">
+      <div className="h-10 w-10 rounded-lg bg-blue-900/20 text-blue-400 flex items-center justify-center">
+        <Folder className="h-5 w-5" />
+      </div>
+      <div className="text-right mt-8">
+        <span className="block text-2xl font-bold text-slate-200">
+          {percent}%
+        </span>
+        <span className="text-[10px] text-slate-500 uppercase tracking-wider">
+          Readiness
+        </span>
+      </div>
+    </div>
+    <h3 className="font-medium text-slate-200 text-lg mb-1 group-hover:text-blue-400 transition-colors">
+      {activity.title}
+    </h3>
+    <div className="flex items-center gap-4 text-xs text-slate-500 mb-6">
+      <span>Start: {activity.startDate}</span>
+      <span>End: {activity.deadline}</span>
+    </div>
+  </div>
                         {/* Phase Breakdown */}
                         <div className="space-y-2">
                           <div className="flex justify-between text-[10px] text-slate-500 uppercase tracking-wider">
