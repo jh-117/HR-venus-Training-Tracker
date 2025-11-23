@@ -23,6 +23,15 @@ import {
   DialogTitle,
   DialogDescription,
 } from "./ui/dialog";
+import { Archive, Trash2, User, MoreVertical } from 'lucide-react';
+import { UserProfile } from './UserProfile';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+  DropdownMenuSeparator,
+} from './ui/dropdown-menu';
 
 interface DashboardProps {
   activities: Activity[];
