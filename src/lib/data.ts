@@ -36,6 +36,7 @@ export interface Activity {
   deadline: string; // ISO Date
   createdAt: string;
   steps: ActivityStep[];
+   archived?: boolean; // Add this
 }
 
 export interface ActivityStep extends StandardStep {
