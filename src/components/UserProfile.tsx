@@ -147,18 +147,26 @@ export function UserProfile({ isOpen, onClose }: UserProfileProps) {
             </form>
           </div>
 
-          {/* Danger Zone */}
+         {/* Danger Zone */}
           <div className="space-y-3 pt-4 border-t border-slate-800">
-            <h3 className="text-lg font-semibold text-red-400">Danger Zone</h3>
-            <Button
-              variant="destructive"
-              onClick={handleDeleteAccount}
-              className="w-full"
-            >
-              Delete Account & All Data
-            </Button>
+            <h3 className="text-lg font-semibold text-slate-200">Danger Zone</h3>
+            <div className="space-y-2">
+              <Button
+                variant="outline"
+                onClick={signOut}
+                className="w-full border-slate-700 text-slate-300 hover:bg-slate-800 hover:text-white"
+              >
+                Sign Out
+              </Button>
+              <Button
+                variant="destructive"
+                onClick={handleDeleteAccount}
+                className="w-full bg-red-600 hover:bg-red-700"
+              >
+                Delete Account & All Data
+              </Button>
+            </div>
           </div>
-        </div>
 
         <DialogFooter>
           <Button variant="ghost" onClick={onClose}>Close</Button>
