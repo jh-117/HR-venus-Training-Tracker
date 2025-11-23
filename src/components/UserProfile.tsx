@@ -147,7 +147,7 @@ export function UserProfile({ isOpen, onClose }: UserProfileProps) {
             </form>
           </div>
 
-         {/* Danger Zone */}
+          {/* Danger Zone */}
           <div className="space-y-3 pt-4 border-t border-slate-800">
             <h3 className="text-lg font-semibold text-slate-200">Danger Zone</h3>
             <div className="space-y-2">
@@ -167,6 +167,7 @@ export function UserProfile({ isOpen, onClose }: UserProfileProps) {
               </Button>
             </div>
           </div>
+        </div>
 
         <DialogFooter>
           <Button variant="ghost" onClick={onClose}>Close</Button>
