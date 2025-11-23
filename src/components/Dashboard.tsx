@@ -105,6 +105,21 @@ const [showArchived, setShowArchived] = useState(false);
     onNewActivity(mode);
   };
 
+  const handleArchiveActivity = async (activityId: string, archived: boolean) => {
+  if (onArchiveActivity) {
+    onArchiveActivity(activityId, archived);
+  }
+};
+
+const handleDeleteActivity = async (activityId: string) => {
+  if (!confirm('Are you sure you want to permanently delete this project? This cannot be undone.')) {
+    return;
+  }
+  if (onDeleteActivity) {
+    onDeleteActivity(activityId);
+  }
+};
+  
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">
       <header className="flex items-center justify-between border-b border-slate-800 bg-slate-900/50 px-6 py-4 backdrop-blur">
