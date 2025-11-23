@@ -293,7 +293,7 @@ export function Dashboard({
     className="group relative flex flex-col justify-between rounded-xl border border-slate-800 bg-slate-900 p-6 hover:border-blue-500/50 transition-all shadow-sm"
   >
     {/* Dropdown Menu - Fixed to always stay top right */}
-    <div className="absolute top-4 z-10"style={{ right: '4px' }}>
+    <div className="absolute top-4 z-10"style={{ right: '3px' }}>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button
