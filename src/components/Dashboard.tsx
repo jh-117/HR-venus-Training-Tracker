@@ -96,6 +96,8 @@ export function Dashboard({
 }: DashboardProps) {
   const [isChoiceDialogOpen, setIsChoiceDialogOpen] =
     useState(false);
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
+const [showArchived, setShowArchived] = useState(false);
   const critical = getMostCriticalTask(activities);
 
   const handleCreateChoice = (mode: "template" | "scratch") => {
