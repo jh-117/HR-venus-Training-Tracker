@@ -259,16 +259,26 @@ const handleDeleteActivity = async (activityId: string) => {
         ) : (
           <div className="space-y-6">
             <div className="flex items-center justify-between">
-              <h2 className="text-xl font-semibold text-slate-200">
-                Active Projects
-              </h2>
-              <Button
-                onClick={() => setIsChoiceDialogOpen(true)}
-                className="bg-slate-800 hover:bg-slate-700 border border-slate-700"
-              >
-                <Plus className="h-4 w-4 mr-2" /> New Project
-              </Button>
-            </div>
+  <div className="flex items-center gap-4">
+    <h2 className="text-xl font-semibold text-slate-200">
+      {showArchived ? 'Archived Projects' : 'Active Projects'}
+    </h2>
+    <Button
+      variant="ghost"
+      size="sm"
+      onClick={() => setShowArchived(!showArchived)}
+      className="text-slate-400 hover:text-slate-300"
+    >
+      {showArchived ? 'Show Active' : 'Show Archived'}
+    </Button>
+  </div>
+  <Button
+    onClick={() => setIsChoiceDialogOpen(true)}
+    className="bg-slate-800 hover:bg-slate-700 border border-slate-700"
+  >
+    <Plus className="h-4 w-4 mr-2" /> New Project
+  </Button>
+</div>
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {activities.map((activity) => {
                 const completed = activity.steps.filter(
