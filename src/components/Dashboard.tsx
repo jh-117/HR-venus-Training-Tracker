@@ -123,20 +123,28 @@ const handleDeleteActivity = async (activityId: string) => {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">
       <header className="flex items-center justify-between border-b border-slate-800 bg-slate-900/50 px-6 py-4 backdrop-blur">
-        <div className="flex items-center gap-3">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600/20 text-blue-500">
-            <Folder className="h-5 w-5" />
-          </div>
-          <div>
-            <h1 className="text-lg font-bold leading-none">
-              HR Venus
-            </h1>
-            <p className="text-xs text-slate-400">
-              Training Action Tracker
-            </p>
-          </div>
-        </div>
-      </header>
+  <div className="flex items-center gap-3">
+    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600/20 text-blue-500">
+      <Folder className="h-5 w-5" />
+    </div>
+    <div>
+      <h1 className="text-lg font-bold leading-none">HR Venus</h1>
+      <p className="text-xs text-slate-400">Training Action Tracker</p>
+    </div>
+  </div>
+  
+  <div className="flex items-center gap-2">
+    <Button
+      variant="ghost"
+      size="sm"
+      onClick={() => setIsProfileOpen(true)}
+      className="text-slate-400 hover:text-white"
+    >
+      <User className="h-4 w-4 mr-2" />
+      Profile
+    </Button>
+  </div>
+</header>
 
       <main className="container mx-auto max-w-5xl p-8 space-y-10">
         {/* Flashlight / Critical Spotlight */}
