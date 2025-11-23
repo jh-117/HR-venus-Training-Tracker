@@ -346,7 +346,7 @@ export function Dashboard({
                         onClick={() => onSelectActivity(activity)}
                       >
                         <div>
-                          <div className="flex items-start justify-between mb-4 pr-16">
+                          <div className="flex items-start justify-between mb-4 pr-20">
                             <div className="h-10 w-10 rounded-lg bg-blue-900/20 text-blue-400 flex items-center justify-center">
                               <Folder className="h-5 w-5" />
                             </div>
