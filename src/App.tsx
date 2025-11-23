@@ -51,7 +51,7 @@ export default function App() {
         startDate: activity.start_date,
         deadline: activity.deadline,
         createdAt: activity.created_at,
-        archived: activity.archived || false, // Add this line
+        archived: activity.archived || false,
         steps: stepsData
           .filter((step: any) => step.activity_id === activity.id)
           .map((step: any) => ({
@@ -87,43 +87,41 @@ export default function App() {
     setIsCreateModalOpen(true);
   };
 
+  const handleArchiveActivity = async (activityId: string, archived: boolean) => {
+    try {
+      const { error } = await supabase
+        .from('activities')
+        .update({ archived })
+        .eq('id', activityId);
+
+      if (error) throw error;
+
+      await loadActivities();
+    } catch (error) {
+      console.error('Error archiving activity:', error);
+      alert('Failed to archive activity');
+    }
+  };
+
+  const handleDeleteActivity = async (activityId: string) => {
+    try {
+      const { error } = await supabase
+        .from('activities')
+        .delete()
+        .eq('id', activityId);
+
+      if (error) throw error;
+
+      await loadActivities();
+    } catch (error) {
+      console.error('Error deleting activity:', error);
+      alert('Failed to delete activity');
+    }
+  };
+
   const handleCreateActivity = async (newActivity: Activity) => {
     if (!user) return;
 
-  const handleArchiveActivity = async (activityId: string, archived: boolean) => {
-  try {
-    const { error } = await supabase
-      .from('activities')
-      .update({ archived })
-      .eq('id', activityId);
-
-    if (error) throw error;
-
-    await loadActivities();
-  } catch (error) {
-    console.error('Error archiving activity:', error);
-    alert('Failed to archive activity');
-  }
-};
-
-const handleDeleteActivity = async (activityId: string) => {
-  try {
-    const { error } = await supabase
-      .from('activities')
-      .delete()
-      .eq('id', activityId);
-
-    if (error) throw error;
-
-    await loadActivities();
-  } catch (error) {
-    console.error('Error deleting activity:', error);
-    alert('Failed to delete activity');
-  }
-};
-
-
-    
     try {
       // Insert activity
       const { data: activityData, error: activityError } = await supabase
