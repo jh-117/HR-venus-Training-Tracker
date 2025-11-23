@@ -37,6 +37,8 @@ interface DashboardProps {
   activities: Activity[];
   onNewActivity: (mode: "template" | "scratch") => void;
   onSelectActivity: (activity: Activity) => void;
+  onArchiveActivity?: (activityId: string, archived: boolean) => void;
+  onDeleteActivity?: (activityId: string) => void;
 }
 
 function getMostCriticalTask(
