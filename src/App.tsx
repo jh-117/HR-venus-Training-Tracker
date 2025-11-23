@@ -89,6 +89,40 @@ export default function App() {
   const handleCreateActivity = async (newActivity: Activity) => {
     if (!user) return;
 
+  const handleArchiveActivity = async (activityId: string, archived: boolean) => {
+  try {
+    const { error } = await supabase
+      .from('activities')
+      .update({ archived })
+      .eq('id', activityId);
+
+    if (error) throw error;
+
+    await loadActivities();
+  } catch (error) {
+    console.error('Error archiving activity:', error);
+    alert('Failed to archive activity');
+  }
+};
+
+const handleDeleteActivity = async (activityId: string) => {
+  try {
+    const { error } = await supabase
+      .from('activities')
+      .delete()
+      .eq('id', activityId);
+
+    if (error) throw error;
+
+    await loadActivities();
+  } catch (error) {
+    console.error('Error deleting activity:', error);
+    alert('Failed to delete activity');
+  }
+};
+
+
+    
     try {
       // Insert activity
       const { data: activityData, error: activityError } = await supabase
