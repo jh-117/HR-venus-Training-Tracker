@@ -51,6 +51,7 @@ export default function App() {
         startDate: activity.start_date,
         deadline: activity.deadline,
         createdAt: activity.created_at,
+        archived: activity.archived || false, // Add this line
         steps: stepsData
           .filter((step: any) => step.activity_id === activity.id)
           .map((step: any) => ({
