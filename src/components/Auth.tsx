@@ -48,10 +48,9 @@ export function Auth() {
               <Folder className="h-7 w-7" />
             </div>
           </div>
-   <h1 className="text-7xl sm:text-8xl md:text-9xl font-black tracking-tight text-slate-100 mb-4">
+  <h1 className="font-black tracking-tight text-slate-100 mb-4" style={{fontSize: 'clamp(4rem, 15vw, 12rem)'}}>
   HR<span className="text-slate-300">Venus</span>
 </h1>
-
 <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-400">
   Training Action Tracker
 </p>
