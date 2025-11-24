@@ -36,8 +36,8 @@ export function Auth() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-between p-4">
-      <div className="w-full max-w-md flex-1 flex flex-col justify-center pb-16">
+   <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-center p-4 relative">
+      <div className="w-full max-w-md">
         {/* Header */}
         <div className="text-center mb-6">
           <div className="flex justify-center mb-3">
