@@ -125,7 +125,7 @@ export function Auth() {
           <span className="font-semibold text-slate-200">Kadosh <span className="text-cyan-400">AI</span></span>
         </div>
          </div>
-         </div>
+         
     </div>
     
         
