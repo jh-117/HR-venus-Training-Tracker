@@ -6,13 +6,15 @@ import { useAuth } from '../contexts/AuthContext'
 import { Folder } from 'lucide-react'
 import kadoshLogo from '../assets/kadoshAI.png'
 
+export function Auth() {
+  // ✅ All hooks must be inside the component
   const [isSignUp, setIsSignUp] = useState(false)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState('')
-  
+
   const { signIn, signUp } = useAuth()
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -23,23 +25,18 @@ import kadoshLogo from '../assets/kadoshAI.png'
 
     if (isSignUp) {
       const { error } = await signUp(email, password)
-      if (error) {
-        setError(error.message)
-      } else {
-        setMessage('Check your email to confirm your account!')
-      }
+      if (error) setError(error.message)
+      else setMessage('Check your email to confirm your account!')
     } else {
       const { error } = await signIn(email, password)
-      if (error) {
-        setError(error.message)
-      }
+      if (error) setError(error.message)
     }
-    
+
     setLoading(false)
   }
 
   return (
-    <div className="min-h-screen bg-slate-950 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-center p-4 relative">
       <div className="w-full max-w-md">
         {/* Header */}
         <div className="text-center mb-8">
@@ -48,16 +45,15 @@ import kadoshLogo from '../assets/kadoshAI.png'
               <Folder className="h-11 w-11" />
             </div>
           </div>
-  <h1 className="font-black tracking-tight text-slate-100 mb-4" style={{fontSize: 'clamp(2.5rem, 8vw, 6rem)'}}>
-  HR<span className="text-slate-300">Venus</span>
-</h1>
-          
-<p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-400">
-  Training Action Tracker
-</p>
-
-
-
+          <h1
+            className="font-black tracking-tight text-slate-100 mb-4"
+            style={{ fontSize: 'clamp(2.5rem, 8vw, 6rem)' }}
+          >
+            HR<span className="text-slate-300">Venus</span>
+          </h1>
+          <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-400">
+            Training Action Tracker
+          </p>
         </div>
 
         {/* Auth Form */}
@@ -94,17 +90,8 @@ import kadoshLogo from '../assets/kadoshAI.png'
               />
             </div>
 
-            {error && (
-              <div className="bg-red-500/10 border border-red-500/50 rounded-lg p-3 text-red-400 text-sm">
-                {error}
-              </div>
-            )}
-
-            {message && (
-              <div className="bg-green-500/10 border border-green-500/50 rounded-lg p-3 text-green-400 text-sm">
-                {message}
-              </div>
-            )}
+            {error && <div className="bg-red-500/10 border border-red-500/50 rounded-lg p-3 text-red-400 text-sm">{error}</div>}
+            {message && <div className="bg-green-500/10 border border-green-500/50 rounded-lg p-3 text-green-400 text-sm">{message}</div>}
 
             <Button
               type="submit"
@@ -118,23 +105,20 @@ import kadoshLogo from '../assets/kadoshAI.png'
           <div className="mt-6 text-center">
             <button
               type="button"
-              onClick={() => {
-                setIsSignUp(!isSignUp)
-                setError('')
-                setMessage('')
-              }}
+              onClick={() => { setIsSignUp(!isSignUp); setError(''); setMessage(''); }}
               className="text-sm text-slate-400 hover:text-slate-300"
             >
               {isSignUp ? 'Already have an account? Sign in' : "Don't have an account? Sign up"}
             </button>
           </div>
         </div>
+      </div>
 
-         {/* Powered by logo fixed at bottom */}
+      {/* Powered by logo fixed at bottom */}
       <div className="absolute bottom-4 flex flex-col items-center w-full">
         <img src={kadoshLogo} alt="Powered by Kadosh AI" className="h-8 opacity-90" />
         <span className="text-xs text-slate-400 mt-1">Powered by Kadosh AI</span>
-       </div>
+      </div>
     </div>
   )
 }
