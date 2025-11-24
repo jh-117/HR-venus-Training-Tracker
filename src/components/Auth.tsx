@@ -4,7 +4,7 @@ import { Input } from './ui/input'
 import { Label } from './ui/label'
 import { useAuth } from '../contexts/AuthContext'
 import { Folder } from 'lucide-react'
-import kadoshLogo from '../assets/kadosh AI.png'
+import kadoshLogo from '../assets/kadoshAI.png'
 
   const [isSignUp, setIsSignUp] = useState(false)
   const [email, setEmail] = useState('')
