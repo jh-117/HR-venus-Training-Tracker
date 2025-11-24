@@ -35,23 +35,22 @@ export function Auth() {
     setLoading(false)
   }
 
-  return (
-    <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-center p-4 relative">
-      <div className="w-full max-w-md">
+ <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-between p-4">
+      <div className="w-full max-w-md flex-1 flex flex-col justify-center pb-16">
         {/* Header */}
-        <div className="text-center mb-8">
-          <div className="flex justify-center mb-4">
-            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-600/20 text-blue-500">
-              <Folder className="h-11 w-11" />
+        <div className="text-center mb-6">
+          <div className="flex justify-center mb-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600/20 text-blue-500">
+              <Folder className="h-9 w-9" />
             </div>
           </div>
           <h1
-            className="font-black tracking-tight text-slate-100 mb-4"
-            style={{ fontSize: 'clamp(2.5rem, 8vw, 6rem)' }}
+            className="font-black tracking-tight text-slate-100 mb-2"
+            style={{ fontSize: 'clamp(2rem, 6vw, 4rem)' }}
           >
             HR<span className="text-slate-300">Venus</span>
           </h1>
-          <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-400">
+          <p className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-400">
             Training Action Tracker
           </p>
         </div>
