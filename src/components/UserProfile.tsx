@@ -20,7 +20,7 @@ export function UserProfile({ isOpen, onClose }: UserProfileProps) {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const [fullName, setFullName] = useState('');
-const [isEditingName, setIsEditingName] = useState(false);
+  const [isEditingName, setIsEditingName] = useState(false);
 
 
   const handleChangePassword = async (e: React.FormEvent) => {
