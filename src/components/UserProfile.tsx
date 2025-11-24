@@ -19,6 +19,9 @@ export function UserProfile({ isOpen, onClose }: UserProfileProps) {
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [fullName, setFullName] = useState('');
+const [isEditingName, setIsEditingName] = useState(false);
+
 
   const handleChangePassword = async (e: React.FormEvent) => {
     e.preventDefault();
