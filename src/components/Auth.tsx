@@ -1,36 +1,38 @@
 import React, { useState } from 'react'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
+import { Button } from './ui/button'
+import { Input } from './ui/input'
+import { Label } from './ui/label'
+import { useAuth } from '../contexts/AuthContext'
 import { Folder } from 'lucide-react'
 
-export default function Auth() {
+export function Auth() {
   const [isSignUp, setIsSignUp] = useState(false)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState('')
+  
+  const { signIn, signUp } = useAuth()
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setError('')
     setMessage('')
     setLoading(true)
 
-    // Simulated authentication - replace with your actual auth logic
-    try {
-      await new Promise(resolve => setTimeout(resolve, 1000))
-      
-      if (isSignUp) {
-        // Simulate sign up
-        setMessage('Check your email to confirm your account!')
+    if (isSignUp) {
+      const { error } = await signUp(email, password)
+      if (error) {
+        setError(error.message)
       } else {
-        // Simulate sign in
-        console.log('Signed in with:', email)
+        setMessage('Check your email to confirm your account!')
       }
-    } catch (err) {
-      setError('Authentication failed. Please try again.')
+    } else {
+      const { error } = await signIn(email, password)
+      if (error) {
+        setError(error.message)
+      }
     }
     
     setLoading(false)
@@ -46,14 +48,16 @@ export default function Auth() {
               <Folder className="h-7 w-7" />
             </div>
           </div>
-          
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight text-slate-100 mb-4">
-            HR<span className="text-slate-300">Venus</span>
-          </h1>
-          
-          <p className="text-xl sm:text-2xl md:text-3xl font-semibold text-slate-400">
-            Training Action Tracker
-          </p>
+      <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tight text-slate-100 mb-4">
+  HR<span className="text-slate-300">Venus</span>
+</h1>
+
+<p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-400">
+  Training Action Tracker
+</p>
+
+
+
         </div>
 
         {/* Auth Form */}
@@ -62,7 +66,7 @@ export default function Auth() {
             {isSignUp ? 'Create Account' : 'Welcome Back'}
           </h2>
 
-          <div className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="email" className="text-slate-200">Email</Label>
               <Input
@@ -103,13 +107,13 @@ export default function Auth() {
             )}
 
             <Button
-              onClick={handleSubmit}
+              type="submit"
               disabled={loading}
               className="w-full bg-blue-600 hover:bg-blue-700 text-white"
             >
               {loading ? 'Loading...' : isSignUp ? 'Sign Up' : 'Sign In'}
             </Button>
-          </div>
+          </form>
 
           <div className="mt-6 text-center">
             <button
@@ -127,5 +131,5 @@ export default function Auth() {
         </div>
       </div>
     </div>
-  );
+  )
 }
