@@ -128,6 +128,8 @@ export function Auth() {
               {isSignUp ? 'Already have an account? Sign in' : "Don't have an account? Sign up"}
             </button>
           </div>
+        </div>
+
          {/* Powered by logo fixed at bottom */}
       <div className="absolute bottom-4 flex flex-col items-center w-full">
         <img src={kadoshLogo} alt="Powered by Kadosh AI" className="h-8 opacity-90" />
@@ -136,8 +138,6 @@ export function Auth() {
     </div>
   );
 }
-        
-        </div>
       </div>
     </div>
   )
