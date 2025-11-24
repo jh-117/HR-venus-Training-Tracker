@@ -252,7 +252,7 @@ export default function App() {
         <div className="flex-1">
           <Auth />
         </div>
-        <KadoshFooter />
+   
       </div>
     );
   }
