@@ -136,15 +136,6 @@ const handleUpdateName = async () => {
 
         <div className="space-y-6 py-4">
           {/* Account Info */}
-          <div className="space-y-2">
-            <h3 className="text-lg font-semibold text-slate-200">Account Information</h3>
-            <div className="bg-slate-950 border border-slate-800 rounded-lg p-4">
-              <div className="text-sm text-slate-400">Email</div>
-              <div className="text-slate-200 font-medium">{user?.email}</div>
-            </div>
-          </div>
-
-          {/* Account Info */}
 <div className="space-y-2">
   <h3 className="text-lg font-semibold text-slate-200">Account Information</h3>
   <div className="bg-slate-950 border border-slate-800 rounded-lg p-4 space-y-3">
