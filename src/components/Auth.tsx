@@ -35,7 +35,8 @@ export function Auth() {
     setLoading(false)
   }
 
- <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-between p-4">
+  return (
+    <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-between p-4">
       <div className="w-full max-w-md flex-1 flex flex-col justify-center pb-16">
         {/* Header */}
         <div className="text-center mb-6">
@@ -54,6 +55,7 @@ export function Auth() {
             Training Action Tracker
           </p>
         </div>
+       
 
         {/* Auth Form */}
         <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 shadow-xl">
