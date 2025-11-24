@@ -1,5 +1,5 @@
 import React from 'react';
-import kadoshLogo from '../assets/kadosh AI.png';
+import kadoshLogo from '../assets/kadoshAI.png';
 
 export const KadoshFooter = () => {
   return (
