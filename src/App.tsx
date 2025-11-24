@@ -248,7 +248,14 @@ export default function App() {
 
   // Show auth page if not logged in
   if (!user) {
-    return <Auth />;
+    return (
+      <div className="relative flex flex-col min-h-screen">
+        <div className="flex-1">
+          <Auth />
+        </div>
+        <KadoshFooter />
+      </div>
+    );
   }
 
   return (
