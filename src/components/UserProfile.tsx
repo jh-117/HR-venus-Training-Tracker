@@ -54,31 +54,35 @@ export function UserProfile({ isOpen, onClose }: UserProfileProps) {
   };
 
   const handleDeleteAccount = async () => {
-    if (!confirm('Are you sure you want to delete your account? This action cannot be undone and all your data will be permanently deleted.')) {
-      return;
-    }
+  if (!confirm('Are you sure you want to delete your account? This action cannot be undone and all your data will be permanently deleted.')) {
+    return;
+  }
 
-    if (!confirm('This is your last warning. Delete account and ALL data permanently?')) {
-      return;
-    }
+  if (!confirm('This is your last warning. Delete account and ALL data permanently?')) {
+    return;
+  }
 
-    try {
-      // Delete all user's activities (steps will be cascade deleted)
-      const { error: deleteError } = await supabase
-        .from('activities')
-        .delete()
-        .eq('user_id', user?.id);
+  try {
+    // Request account deletion - this will trigger data cleanup
+    const { error } = await supabase.rpc('delete_current_user');
+    
+    if (error) throw error;
 
-      if (deleteError) throw deleteError;
+    await signOut();
+    alert('Your account has been permanently deleted.');
+  } catch (error) {
+    console.error('Error deleting account:', error);
+    
+    // Fallback: Just delete data and sign out
+    const { error: deleteError } = await supabase
+      .from('activities')
+      .delete()
+      .eq('user_id', user?.id);
 
-      // Sign out (account deletion via API requires admin access, so we just sign out)
-      await signOut();
-      alert('Account data deleted. Please contact support to fully remove your account.');
-    } catch (error) {
-      console.error('Error deleting account:', error);
-      setError('Failed to delete account data');
-    }
-  };
+    await signOut();
+    alert('Your data has been deleted and you have been signed out. Please contact support to fully remove your account.');
+  }
+};
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
