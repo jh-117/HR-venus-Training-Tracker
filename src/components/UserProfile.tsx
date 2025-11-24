@@ -19,9 +19,49 @@ export function UserProfile({ isOpen, onClose }: UserProfileProps) {
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const [fullName, setFullName] = useState('');
-  const [isEditingName, setIsEditingName] = useState(false);
+ const [fullName, setFullName] = useState('');
+const [isEditingName, setIsEditingName] = useState(false);
 
+// Load profile on mount
+useEffect(() => {
+  if (user && isOpen) {
+    loadProfile();
+  }
+}, [user, isOpen]);
+
+const loadProfile = async () => {
+  try {
+    const { data, error } = await supabase
+      .from('profiles')
+      .select('full_name')
+      .eq('id', user?.id)
+      .single();
+
+    if (error) throw error;
+    if (data) {
+      setFullName(data.full_name || '');
+    }
+  } catch (error) {
+    console.error('Error loading profile:', error);
+  }
+};
+
+const handleUpdateName = async () => {
+  try {
+    const { error } = await supabase
+      .from('profiles')
+      .update({ full_name: fullName, updated_at: new Date().toISOString() })
+      .eq('id', user?.id);
+
+    if (error) throw error;
+    
+    setMessage('Name updated successfully!');
+    setIsEditingName(false);
+  } catch (error) {
+    console.error('Error updating name:', error);
+    setError('Failed to update name');
+  }
+};
 
   const handleChangePassword = async (e: React.FormEvent) => {
     e.preventDefault();
