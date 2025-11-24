@@ -37,7 +37,21 @@ const loadProfile = async () => {
       .eq('id', user?.id)
       .single();
 
-    if (error) throw error;
+    if (error) {
+      // If profile doesn't exist, create it
+      if (error.code === 'PGRST116') {
+        const { error: insertError } = await supabase
+          .from('profiles')
+          .insert({ id: user?.id, email: user?.email, full_name: null });
+        
+        if (insertError) {
+          console.error('Error creating profile:', insertError);
+        }
+      } else {
+        throw error;
+      }
+    }
+    
     if (data) {
       setFullName(data.full_name || '');
     }
@@ -45,7 +59,6 @@ const loadProfile = async () => {
     console.error('Error loading profile:', error);
   }
 };
-
 const handleUpdateName = async () => {
   try {
     const { error } = await supabase
