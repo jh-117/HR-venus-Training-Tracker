@@ -43,7 +43,7 @@ export function Auth() {
           <div className="text-center mb-6">
             <div className="flex justify-center mb-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600/20 text-blue-500">
-                <Folder className="h-9 w-9" />
+                <Folder className="h-11 w-11" />
               </div>
             </div>
             <h1
