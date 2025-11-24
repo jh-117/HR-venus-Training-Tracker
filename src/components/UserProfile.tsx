@@ -65,6 +65,7 @@ const loadProfile = async () => {
     console.error('Error loading profile:', error);
   }
 };
+  
   const handleChangePassword = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
