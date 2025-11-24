@@ -250,10 +250,10 @@ export default function App() {
   if (!user) {
     return (
       <div className="relative flex flex-col min-h-screen">
+        <KadoshFooter />
         <div className="flex-1">
           <Auth />
         </div>
-        <KadoshFooter />
       </div>
     );
   }
