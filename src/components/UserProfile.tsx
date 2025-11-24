@@ -144,6 +144,51 @@ const handleUpdateName = async () => {
             </div>
           </div>
 
+          {/* Account Info */}
+<div className="space-y-2">
+  <h3 className="text-lg font-semibold text-slate-200">Account Information</h3>
+  <div className="bg-slate-950 border border-slate-800 rounded-lg p-4 space-y-3">
+    <div>
+      <div className="text-sm text-slate-400">Email</div>
+      <div className="text-slate-200 font-medium">{user?.email}</div>
+    </div>
+    
+    <div>
+      <div className="text-sm text-slate-400 mb-1">Full Name</div>
+      {isEditingName ? (
+        <div className="flex gap-2">
+          <Input
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
+            placeholder="Enter your full name"
+            className="bg-slate-900 border-slate-700 flex-1"
+          />
+          <Button size="sm" onClick={handleUpdateName} className="bg-blue-600 hover:bg-blue-700">
+            Save
+          </Button>
+          <Button size="sm" variant="ghost" onClick={() => setIsEditingName(false)}>
+            Cancel
+          </Button>
+        </div>
+      ) : (
+        <div className="flex items-center justify-between">
+          <div className="text-slate-200 font-medium">
+            {fullName || 'Not set'}
+          </div>
+          <Button
+            size="sm"
+            variant="ghost"
+            onClick={() => setIsEditingName(true)}
+            className="text-slate-400 hover:text-white"
+          >
+            Edit
+          </Button>
+        </div>
+      )}
+    </div>
+  </div>
+</div>
+
           {/* Change Password */}
           <div className="space-y-3">
             <h3 className="text-lg font-semibold text-slate-200">Change Password</h3>
