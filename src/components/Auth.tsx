@@ -48,7 +48,7 @@ export function Auth() {
               <Folder className="h-7 w-7" />
             </div>
           </div>
-  <h1 className="font-black tracking-tight text-slate-100 mb-4" style={{fontSize: 'clamp(4rem, 15vw, 12rem)'}}>
+  <h1 className="font-black tracking-tight text-slate-100 mb-4" style={{fontSize: 'clamp(2.5rem, 8vw, 6rem)'}}>
   HR<span className="text-slate-300">Venus</span>
 </h1>
           
