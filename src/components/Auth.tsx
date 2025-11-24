@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import { Button } from './ui/button'
-import { Input } from './ui/input'
-import { Label } from './ui/label'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
 import { useAuth } from '../contexts/AuthContext'
 import { Folder } from 'lucide-react'
 
-export function Auth() {
+export default function Auth() {
   const [isSignUp, setIsSignUp] = useState(false)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -15,7 +15,7 @@ export function Auth() {
   
   const { signIn, signUp } = useAuth()
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     setError('')
     setMessage('')
@@ -48,16 +48,14 @@ export function Auth() {
               <Folder className="h-7 w-7" />
             </div>
           </div>
-       <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight text-slate-100 mb-4">
-  HR<span className="text-slate-300">Venus</span>
-</h1>
-
-<p className="text-xl sm:text-2xl md:text-3xl font-semibold text-slate-400">
-  Training Action Tracker
-</p>
-
-
-
+          
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight text-slate-100 mb-4">
+            HR<span className="text-slate-300">Venus</span>
+          </h1>
+          
+          <p className="text-xl sm:text-2xl md:text-3xl font-semibold text-slate-400">
+            Training Action Tracker
+          </p>
         </div>
 
         {/* Auth Form */}
@@ -66,7 +64,7 @@ export function Auth() {
             {isSignUp ? 'Create Account' : 'Welcome Back'}
           </h2>
 
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="email" className="text-slate-200">Email</Label>
               <Input
@@ -107,13 +105,13 @@ export function Auth() {
             )}
 
             <Button
-              type="submit"
+              onClick={handleSubmit}
               disabled={loading}
               className="w-full bg-blue-600 hover:bg-blue-700 text-white"
             >
               {loading ? 'Loading...' : isSignUp ? 'Sign Up' : 'Sign In'}
             </Button>
-          </form>
+          </div>
 
           <div className="mt-6 text-center">
             <button
@@ -131,5 +129,5 @@ export function Auth() {
         </div>
       </div>
     </div>
-  )
+  );
 }
