@@ -116,10 +116,10 @@ export function Auth() {
         </div>
       </div>
 
-     {/* Powered by logo fixed at bottom */}
-      <div className="fixed bottom-6 left-0 right-0 flex flex-col items-center z-50">
-        <img src={kadoshLogo} alt="Powered by Kadosh AI" className="h-7 opacity-90" />
-        <span className="text-xs text-slate-400 mt-1.5">Powered by Kadosh AI</span>
+      {/* Powered by logo fixed at bottom */}
+      <div className="fixed bottom-6 left-0 right-0 flex flex-col items-center z-50 bg-slate-950/50 py-3">
+        {kadoshLogo && <img src={kadoshLogo} alt="Powered by Kadosh AI" className="h-7 opacity-90 mb-1" />}
+        <span className="text-sm text-slate-300 font-medium">Powered by Kadosh AI</span>
       </div>
     </>
   )
