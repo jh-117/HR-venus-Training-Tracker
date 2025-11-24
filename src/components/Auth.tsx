@@ -115,15 +115,17 @@ export function Auth() {
           </div>
         </div>
       </div>
-{/* Powered by logo - Floating Pill Style */}
-<div className="fixed bottom-6 left-0 right-0 flex justify-center z-50 pointer-events-none">
-  <div className="flex items-center gap-2 bg-slate-950/90 backdrop-blur-sm border border-slate-800/50 py-2 px-4 rounded-full shadow-xl pointer-events-auto">
-    <div className="w-5 h-5 bg-green-500 rounded flex items-center justify-center">
-      <span className="text-white font-bold text-[10px]">K</span>
-    </div>
-    <span className="text-xs text-slate-300 font-medium">
-      Powered by <span className="text-green-400">Kadosh AI</span>
-    </span>
-  </div>
-</div>
-           
+
+      {/* Powered by logo fixed at bottom */}
+      <div className="fixed bottom-0 left-0 right-0 flex flex-col items-center z-50 bg-slate-950 border-t border-slate-800 py-4">
+         <div className="max-w-7xl mx-auto flex items-center justify-center gap-3 text-sm text-slate-400">
+        <span>Powered by</span>
+        <div className="flex items-center gap-2">
+          <img src={kadoshLogo} alt="Kadosh AI" className="h-6 object-contain" />
+          <span className="font-semibold text-slate-200">Kadosh <span className="text-cyan-400">AI</span></span>
+        </div>
+         </div>
+         </div>
+        
+  )
+}
