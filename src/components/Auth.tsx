@@ -124,7 +124,7 @@ export function Auth() {
           <img src={kadoshLogo} alt="Kadosh AI" className="h-6 object-contain" />
           <span className="font-semibold text-slate-200">Kadosh <span className="text-cyan-400">AI</span></span>
         </div>
-         </div>
+      </div>
       </div>
   )
 }
