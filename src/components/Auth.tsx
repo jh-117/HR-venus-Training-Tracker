@@ -48,12 +48,14 @@ export function Auth() {
               <Folder className="h-7 w-7" />
             </div>
           </div>
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-slate-100 mb-3">
-  HR Venus
+       <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight text-slate-100 mb-4">
+  HR<span className="text-slate-300">Venus</span>
 </h1>
-<p className="text-lg sm:text-xl md:text-2xl text-slate-400">
+
+<p className="text-xl sm:text-2xl md:text-3xl font-semibold text-slate-400">
   Training Action Tracker
 </p>
+
 
 
         </div>
