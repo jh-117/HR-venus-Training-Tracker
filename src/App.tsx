@@ -3,6 +3,7 @@ import { Dashboard } from './components/Dashboard';
 import { TrackerBoard } from './components/TrackerBoard';
 import { CreateActivityModal } from './components/CreateActivityModal';
 import { Auth } from './components/Auth';
+import { KadoshFooter } from './components/KadoshFooter';
 import { Activity } from './lib/data';
 import { useAuth } from './contexts/AuthContext';
 import { supabase } from './lib/supabase';
@@ -251,24 +252,26 @@ export default function App() {
   }
 
   return (
-    <div className="relative">
-      
+    <div className="relative flex flex-col min-h-screen">
+      <div className="flex-1">
+        {currentActivity ? (
+          <TrackerBoard
+            activity={currentActivity}
+            onBack={() => setCurrentActivity(null)}
+            onUpdateActivity={handleUpdateActivity}
+          />
+        ) : (
+          <Dashboard
+            activities={activities}
+            onNewActivity={handleNewActivity}
+            onSelectActivity={setCurrentActivity}
+            onArchiveActivity={handleArchiveActivity}
+            onDeleteActivity={handleDeleteActivity}
+          />
+        )}
+      </div>
 
-      {currentActivity ? (
-        <TrackerBoard
-          activity={currentActivity}
-          onBack={() => setCurrentActivity(null)}
-          onUpdateActivity={handleUpdateActivity}
-        />
-      ) : (
-        <Dashboard
-          activities={activities}
-          onNewActivity={handleNewActivity}
-          onSelectActivity={setCurrentActivity}
-          onArchiveActivity={handleArchiveActivity}
-          onDeleteActivity={handleDeleteActivity}
-        />
-      )}
+      <KadoshFooter />
 
       <CreateActivityModal
         isOpen={isCreateModalOpen}
