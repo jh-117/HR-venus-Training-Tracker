@@ -38,44 +38,33 @@ const loadProfile = async () => {
       .single();
 
     if (error) {
-      // If profile doesn't exist, create it
+      // If profile doesn't exist (error code PGRST116), create it
       if (error.code === 'PGRST116') {
+        console.log('Profile not found, creating new profile...');
         const { error: insertError } = await supabase
           .from('profiles')
-          .insert({ id: user?.id, email: user?.email, full_name: null });
+          .insert({ 
+            id: user?.id, 
+            email: user?.email, 
+            full_name: null 
+          });
         
         if (insertError) {
           console.error('Error creating profile:', insertError);
+        } else {
+          console.log('Profile created successfully');
+          setFullName('');
         }
       } else {
         throw error;
       }
-    }
-    
-    if (data) {
+    } else if (data) {
       setFullName(data.full_name || '');
     }
   } catch (error) {
     console.error('Error loading profile:', error);
   }
 };
-const handleUpdateName = async () => {
-  try {
-    const { error } = await supabase
-      .from('profiles')
-      .update({ full_name: fullName, updated_at: new Date().toISOString() })
-      .eq('id', user?.id);
-
-    if (error) throw error;
-    
-    setMessage('Name updated successfully!');
-    setIsEditingName(false);
-  } catch (error) {
-    console.error('Error updating name:', error);
-    setError('Failed to update name');
-  }
-};
-
   const handleChangePassword = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
