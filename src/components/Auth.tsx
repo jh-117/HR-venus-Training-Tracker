@@ -48,8 +48,9 @@ export function Auth() {
               <Folder className="h-7 w-7" />
             </div>
           </div>
-          <h1 className="text-3xl font-bold text-slate-100 mb-2">HR Venus</h1>
-          <p className="text-slate-400">Training Action Tracker</p>
+         <h1 className="text-5xl font-extrabold text-slate-100 mb-3">HR Venus</h1>
+<p className="text-xl text-slate-400">Training Action Tracker</p>
+
         </div>
 
         {/* Auth Form */}
