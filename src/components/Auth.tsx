@@ -134,8 +134,7 @@ export function Auth() {
       <div className="absolute bottom-4 flex flex-col items-center w-full">
         <img src={kadoshLogo} alt="Powered by Kadosh AI" className="h-8 opacity-90" />
         <span className="text-xs text-slate-400 mt-1">Powered by Kadosh AI</span>
-      </div>
+       </div>
     </div>
-  );
+  )
 }
-      
