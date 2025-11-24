@@ -1,10 +1,8 @@
 import React, { useState } from 'react'
-import { Button } from './ui/button'
-import { Input } from './ui/input'
-import { Label } from './ui/label'
-import { useAuth } from '../contexts/AuthContext'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
 import { Folder } from 'lucide-react'
-
 
 export default function Auth() {
   const [isSignUp, setIsSignUp] = useState(false)
@@ -13,8 +11,6 @@ export default function Auth() {
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState('')
-  
-  const { signIn, signUp } = useAuth()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -22,18 +18,19 @@ export default function Auth() {
     setMessage('')
     setLoading(true)
 
-    if (isSignUp) {
-      const { error } = await signUp(email, password)
-      if (error) {
-        setError(error.message)
-      } else {
+    // Simulated authentication - replace with your actual auth logic
+    try {
+      await new Promise(resolve => setTimeout(resolve, 1000))
+      
+      if (isSignUp) {
+        // Simulate sign up
         setMessage('Check your email to confirm your account!')
+      } else {
+        // Simulate sign in
+        console.log('Signed in with:', email)
       }
-    } else {
-      const { error } = await signIn(email, password)
-      if (error) {
-        setError(error.message)
-      }
+    } catch (err) {
+      setError('Authentication failed. Please try again.')
     }
     
     setLoading(false)
