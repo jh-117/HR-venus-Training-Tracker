@@ -116,17 +116,6 @@ export function Auth() {
         </div>
       </div>
 
-      {/* Powered by logo fixed at bottom */}
-      <div className="fixed bottom-0 left-0 right-0 flex flex-col items-center z-50 bg-slate-950 border-t border-slate-800 py-4">
-        <div className="flex items-center gap-2">
-          <div className="w-6 h-6 bg-green-500 rounded flex items-center justify-center">
-            <span className="text-white font-bold text-sm">K</span>
-          </div>
-          <span className="text-sm text-slate-300 font-medium">Powered by <span className="text-green-400">Kadosh AI</span></span>
-        </div>
-      </div>
-    </div>
-    
         
   )
 }
