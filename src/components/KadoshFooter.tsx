@@ -8,7 +8,7 @@ export const KadoshFooter = () => {
         <span>Powered by</span>
         <div className="flex items-center gap-2">
           <img src={kadoshLogo} alt="Kadosh AI" className="h-6 object-contain" />
-          <span className="font-semibold text-slate-200">Kadosh <span className="text-cyan-400">AI</span></span>
+          
         </div>
       </div>
     </footer>
