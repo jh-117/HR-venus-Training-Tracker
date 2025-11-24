@@ -1,18 +1,28 @@
 import React from 'react';
 import kadoshLogo from '../assets/kadosh AI.png';
 
-export const KadoshFooter = () => {
+
+export function KadoshFooter() {
   return (
-    <footer className="border-t border-slate-800 bg-slate-950 py-6 px-6 mt-auto">
-      <div className="max-w-7xl mx-auto flex items-center justify-center gap-4">
-        <span className="text-sm text-slate-500 font-medium">Powered by</span>
-        <div className="flex items-center gap-3 bg-slate-900/50 rounded-lg px-4 py-2">
-          <img src={kadoshLogo} alt="Kadosh AI" className="h-7 object-contain" />
-          <span className="font-semibold text-slate-200 text-sm">
-            Kadosh <span className="text-cyan-400">AI</span>
-          </span>
+    <footer className="w-full border-t border-slate-800/50 bg-slate-950/80 backdrop-blur-sm">
+      <div className="container mx-auto px-6 py-4">
+        <div className="flex items-center justify-center gap-2 text-sm">
+          <span className="text-slate-500">Powered by</span>
+          <a
+            href="https://kadosh.ai"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gradient-to-r from-emerald-500/10 to-blue-500/10 border border-emerald-500/20 hover:border-emerald-500/40 transition-all duration-200 hover:scale-105"
+          >
+            <div className="w-5 h-5 rounded bg-gradient-to-br from-emerald-400 to-blue-500 flex items-center justify-center">
+              <span className="text-white text-xs font-bold">K</span>
+            </div>
+            <span className="font-semibold bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent">
+              Kadosh AI
+            </span>
+          </a>
         </div>
       </div>
     </footer>
   );
-};
+}
