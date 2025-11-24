@@ -45,7 +45,7 @@ export function Auth() {
         <div className="text-center mb-8">
           <div className="flex justify-center mb-4">
             <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-600/20 text-blue-500">
-              <Folder className="h-9 w-9" />
+              <Folder className="h-10 w-10" />
             </div>
           </div>
   <h1 className="font-black tracking-tight text-slate-100 mb-4" style={{fontSize: 'clamp(2.5rem, 8vw, 6rem)'}}>
