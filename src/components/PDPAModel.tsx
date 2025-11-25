@@ -1,179 +1,169 @@
-import React, { useState } from 'react'
-import { Button } from './ui/button'
-import { Input } from './ui/input'
-import { Label } from './ui/label'
-import { useAuth } from '../contexts/AuthContext'
-import { Folder } from 'lucide-react'
-import { PDPAModal } from '../components/PDPAModal'
+import React from "react";
 
-export function Auth() {
-  const [isSignUp, setIsSignUp] = useState(false)
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [error, setError] = useState('')
-  const [loading, setLoading] = useState(false)
-  const [message, setMessage] = useState('')
-  const [pdpaConsent, setPdpaConsent] = useState(false)
-  const [showPDPAModal, setShowPDPAModal] = useState(false)
-
-  const { signIn, signUp } = useAuth()
-
-  // -------------------------
-  // Submit Logic
-  // -------------------------
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setError('')
-    setMessage('')
-    setLoading(true)
-
-    if (isSignUp && !pdpaConsent) {
-      setError('You must agree to the Privacy Policy to sign up.')
-      setLoading(false)
-      return
-    }
-
-    if (isSignUp) {
-      const { error } = await signUp(email, password)
-      if (error) setError(error.message)
-      else setMessage('Check your email to confirm your account!')
-    } else {
-      const { error } = await signIn(email, password)
-      if (error) setError(error.message)
-    }
-
-    setLoading(false)
-  }
-
+const HRVenusPDPA = () => {
   return (
-    <>
-      <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-center p-4 pb-20">
-        <div className="w-full max-w-md">
-          {/* Header */}
-          <div className="text-center mb-6">
-            <div className="flex justify-center mb-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600/20 text-blue-500">
-                <Folder className="h-11 w-11" />
-              </div>
-            </div>
+    <div style={{ padding: "20px", maxWidth: "800px", margin: "0 auto" }}>
+      <h2 style={{ textAlign: "center" }}>HRVenus PDPA Compliance</h2>
 
-            <h1
-              className="font-black tracking-tight text-slate-100 mb-2"
-              style={{ fontSize: 'clamp(2rem, 6vw, 4rem)' }}
-            >
-              HR<span className="text-slate-300">Venus</span>
-            </h1>
+      <section>
+        <h3>Introduction</h3>
+        <p>
+          HRVenus is committed to fulfilling its responsibilities under
+          Malaysia's Personal Data Protection Act 2010 (Act 709). We respect the
+          privacy of all HR users and employees whose information is processed
+          through the HRVenus platform. This policy outlines how personal data
+          is collected, used, stored, and protected as part of HR task
+          management, employee administration, and workflow operations.
+        </p>
+      </section>
 
-            <p className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-400">
-              Training Action Tracker
-            </p>
-          </div>
+      <section>
+        <h3>1. Data Collection</h3>
+        <p>We collect and process the following types of personal data:</p>
+        <ul>
+          <li>HR admin and user information (name, email, role)</li>
+          <li>Employee personal details (name, position, department)</li>
+          <li>
+            Task-related information (assignments, deadlines, progress logs)
+          </li>
+          <li>
+            Employee performance notes or records (if entered by HR personnel)
+          </li>
+          <li>
+            Attendance, leave, and internal documentation (if features are
+            enabled)
+          </li>
+          <li>System usage logs and device information for security</li>
+          <li>Uploaded files or documents for HR processing</li>
+        </ul>
+      </section>
 
-          {/* Auth Form */}
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl">
-            <h2 className="text-xl font-bold text-slate-100 mb-4">
-              {isSignUp ? 'Create Account' : 'Welcome Back'}
-            </h2>
+      <section>
+        <h3>2. Purpose of Collection</h3>
+        <p>Your personal data is collected for the following purposes:</p>
+        <ul>
+          <li>To manage HR tasks and workflows efficiently</li>
+          <li>To assign and track employee-related responsibilities</li>
+          <li>To maintain accurate employee records and administrative data</li>
+          <li>To facilitate internal communication and HR decision-making</li>
+          <li>To generate HR reports and performance insights</li>
+          <li>To ensure system integrity, authentication, and access control</li>
+          <li>
+            To improve the functionality, security, and performance of the
+            platform
+          </li>
+        </ul>
+      </section>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
-              {/* Email */}
-              <div className="space-y-2">
-                <Label htmlFor="email" className="text-slate-200">Email</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="you@example.com"
-                  required
-                  className="bg-slate-950 border-slate-700 text-slate-100"
-                />
-              </div>
+      <section>
+        <h3>3. Your Rights Under PDPA</h3>
+        <p>
+          Under Malaysia’s PDPA, users and employees whose data is managed
+          through HRVenus have the right to:
+        </p>
+        <ul>
+          <li>Request access to personal data stored in the system</li>
+          <li>Request correction of inaccurate or incomplete information</li>
+          <li>Withdraw consent for data processing (subject to HR policies)</li>
+          <li>Request deletion of unnecessary or outdated data</li>
+          <li>Request a copy of personal data held (data portability)</li>
+        </ul>
+        <p>
+          Certain rights may be limited in compliance with the
+          organization’s legal or HR retention requirements.
+        </p>
+      </section>
 
-              {/* Password */}
-              <div className="space-y-2">
-                <Label htmlFor="password" className="text-slate-200">Password</Label>
-                <Input
-                  id="password"
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="••••••••"
-                  required
-                  minLength={6}
-                  className="bg-slate-950 border-slate-700 text-slate-100"
-                />
-              </div>
+      <section>
+        <h3>4. Data Security and Retention</h3>
+        <p>
+          HRVenus implements strict security measures to protect personal data,
+          including encrypted storage, role-based access control, and secure
+          authentication. Data retention is based on HR operational
+          requirements, employment regulations, and legal obligations.
+        </p>
+        <p>
+          Once data is no longer required, it will be securely deleted according
+          to internal data retention policies.
+        </p>
+      </section>
 
-              {/* PDPA / Privacy consent */}
-              {isSignUp && (
-                <div className="flex items-start gap-3 mt-2">
-                  <input
-                    id="pdpaConsent"
-                    type="checkbox"
-                    checked={pdpaConsent}
-                    onChange={(e) => setPdpaConsent(e.target.checked)}
-                    className="mt-1 w-4 h-4 rounded border-slate-600 bg-slate-900 text-blue-600 focus:ring-blue-600 cursor-pointer"
-                  />
+      <section>
+        <h3>5. Employee Data Processing</h3>
+        <p>
+          HRVenus acts as a system that enables organizations to manage HR
+          operations. The company using HRVenus remains the primary data
+          controller. HRVenus ensures:
+        </p>
+        <ul>
+          <li>No employee data is sold or disclosed to third parties</li>
+          <li>
+            Uploaded documents and records are only accessible to authorized HR
+            personnel
+          </li>
+          <li>
+            Sensitive data (e.g., performance notes, internal memos) is stored
+            securely
+          </li>
+          <li>
+            Only anonymized usage data may be used to improve the platform
+          </li>
+        </ul>
+      </section>
 
-                  <label htmlFor="pdpaConsent" className="text-sm text-slate-300 leading-relaxed">
-                    I agree to the{' '}
-                    <button
-                      type="button"
-                      onClick={() => setShowPDPAModal(true)}
-                      className="text-blue-400 underline underline-offset-2 hover:text-blue-300 transition-colors"
-                    >
-                      Privacy Policy
-                    </button>{' '}
-                    and consent to the collection and use of my personal data as described.
-                  </label>
-                </div>
-              )}
+      <section>
+        <h3>6. Data Sharing and Disclosure</h3>
+        <p>
+          HRVenus does not sell or share personal data for advertising or
+          external marketing. Data may only be disclosed to:
+        </p>
+        <ul>
+          <li>Authorized HR personnel within your organization</li>
+          <li>
+            Technical service providers (e.g., cloud hosting) strictly for
+            platform operation
+          </li>
+          <li>
+            Legal or regulatory authorities when required by law
+          </li>
+        </ul>
+        <p>
+          All third-party partners are required to follow strict data protection
+          standards.
+        </p>
+      </section>
 
-              {/* Error / Message */}
-              {error && (
-                <div className="bg-red-500/10 border border-red-500/50 rounded-lg p-3 text-red-400 text-sm">
-                  {error}
-                </div>
-              )}
+      <section>
+        <h3>7. Contact Information</h3>
+        <p>
+          For inquiries regarding PDPA compliance, data access, or corrections,
+          you may contact your organization’s Data Protection Officer (DPO) or
+          reach us through the HRVenus support channel.
+        </p>
+      </section>
 
-              {message && (
-                <div className="bg-green-500/10 border border-green-500/50 rounded-lg p-3 text-green-400 text-sm">
-                  {message}
-                </div>
-              )}
+      <section>
+        <h3>8. Updates to This Policy</h3>
+        <p>
+          HRVenus reserves the right to update this Privacy Policy from time to
+          time to reflect new features, legal requirements, or improvements in
+          data management practices. Users will be notified of significant
+          changes within the platform.
+        </p>
+      </section>
 
-              {/* Button */}
-              <Button
-                type="submit"
-                disabled={loading}
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white"
-              >
-                {loading ? 'Loading...' : isSignUp ? 'Sign Up' : 'Sign In'}
-              </Button>
-            </form>
+      <section style={{ marginTop: "30px" }}>
+        <h3>Your Data Protection Rights Summary</h3>
+        <ul>
+          <li>Access your HR and account data</li>
+          <li>Request corrections</li>
+          <li>View assigned tasks and performance-related entries</li>
+          <li>Request deletion where applicable</li>
+          <li>Control how your employee data is used</li>
+        </ul>
+      </section>
+    </div>
+  );
+};
 
-            {/* Switch mode */}
-            <div className="mt-6 text-center">
-              <button
-                type="button"
-                onClick={() => {
-                  setIsSignUp(!isSignUp)
-                  setError('')
-                  setMessage('')
-                  setPdpaConsent(false)
-                }}
-                className="text-sm text-slate-400 hover:text-slate-300"
-              >
-                {isSignUp ? 'Already have an account? Sign in' : "Don't have an account? Sign up"}
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* PDPA Modal */}
-      <PDPAModal isOpen={showPDPAModal} onClose={() => setShowPDPAModal(false)} />
-    </>
-  )
-}
+export default HRVenusPDPA;
