@@ -5,7 +5,7 @@ import { Label } from './ui/label'
 import { useAuth } from '../contexts/AuthContext'
 import { Folder } from 'lucide-react'
 import kadoshLogo from '../assets/kadoshAI.png'
-import { PDPAModal } from '../components/PDPAModal'
+import { PDPAModal } from '../components/PDPAModel'
 
 
 export function Auth() {
