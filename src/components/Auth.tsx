@@ -115,8 +115,8 @@ export function Auth() {
           </div>
         </div>
       </div>
-    </>
-  <div className="mt-10 pt-6 border-t border-slate-200 text-center">
+
+        <div className="mt-10 pt-6 border-t border-slate-200 text-center">
             <p className="text-sm text-slate-500 mb-3">Powered by</p>
             <img
               src="/src/assets/kadoshAI.png"
@@ -129,3 +129,5 @@ export function Auth() {
     </div>
   );
 };
+  
+    </>
