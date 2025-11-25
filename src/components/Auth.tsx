@@ -5,7 +5,7 @@ import { Label } from './ui/label'
 import { useAuth } from '../contexts/AuthContext'
 import { Folder } from 'lucide-react'
 import kadoshLogo from '../assets/kadoshAI.png'
-import { PDPAModal } from './PDPAModal'
+import { PDPAModal } from './PDPAModel'
 
 export function Auth() {
   // ✅ All hooks must be inside the component
