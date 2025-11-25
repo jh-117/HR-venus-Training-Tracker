@@ -65,7 +65,7 @@ export function Auth() {
               </h1>
 
               <p className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-400">
-                Training Action Tracker
+                Pre Training Action Tracker
               </p>
             </div>
 
