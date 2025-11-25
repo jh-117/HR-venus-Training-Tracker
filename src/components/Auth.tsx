@@ -3,48 +3,9 @@ import { Button } from './ui/button'
 import { Input } from './ui/input'
 import { Label } from './ui/label'
 import { useAuth } from '../contexts/AuthContext'
-import { Folder, X } from 'lucide-react'
+import { Folder } from 'lucide-react'
 import kadoshLogo from '../assets/kadoshAI.png'
-import { HRVenusPDPA } from '../components/PDPAModel'
-
-// PDPA Modal Component
-function PDPAModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
-  if (!isOpen) return null
-
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl shadow-xl max-w-2xl w-full max-h-[90vh] overflow-hidden flex flex-col">
-        {/* Header */}
-        <div className="flex items-center justify-between border-b border-slate-800 p-6">
-          <h2 className="text-xl font-bold text-slate-100">Privacy Policy & PDPA Compliance</h2>
-          <button
-            onClick={onClose}
-            className="text-slate-400 hover:text-slate-200 transition-colors"
-          >
-            <X className="h-6 w-6" />
-          </button>
-        </div>
-
-        {/* Content */}
-        <div className="overflow-y-auto flex-1">
-          <div className="text-slate-300 prose prose-invert max-w-none">
-            <HRVenusPDPA />
-          </div>
-        </div>
-
-        {/* Footer */}
-        <div className="border-t border-slate-800 p-6 flex justify-end">
-          <Button
-            onClick={onClose}
-            className="bg-blue-600 hover:bg-blue-700 text-white"
-          >
-            Close
-          </Button>
-        </div>
-      </div>
-    </div>
-  )
-}
+import { PDPAModal } from './PDPAModal'
 
 export function Auth() {
   // ✅ All hooks must be inside the component
