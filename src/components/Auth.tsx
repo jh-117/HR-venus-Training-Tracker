@@ -17,7 +17,7 @@ export function Auth() {
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState('')
   const [pdpaConsent, setPdpaConsent] = useState(false)
-const [showPDPAModal, setShowPDPAModal] = useState(false)
+  const [showPDPAModal, setShowPDPAModal] = useState(false)
 
 
   const { signIn, signUp } = useAuth()
