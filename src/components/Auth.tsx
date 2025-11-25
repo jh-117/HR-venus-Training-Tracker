@@ -171,17 +171,17 @@ export function Auth() {
         </div>
       </div>
 
-      
-       {/* Powered by section at the bottom */}
-      <div className="py-6 border-t border-slate-200 text-center">
-        <p className="text-sm text-slate-500 mb-3">Powered by</p>
-        <img
-          src="/src/assets/kadoshAI.png"
-          alt="Kadosh AI"
-          className="mx-auto h-8"
-        />
+        {/* Powered by section at the bottom */}
+        <div className="py-6 border-t border-slate-800 text-center bg-slate-950">
+          <p className="text-sm text-slate-400 mb-3">Powered by</p>
+          <img
+            src={kadoshLogo}
+            alt="Kadosh AI"
+            className="mx-auto h-8"
+          />
+        </div>
       </div>
-      
+
       {/* PDPA Modal */}
       <PDPAModal isOpen={showPDPAModal} onClose={() => setShowPDPAModal(false)} />
     </>
