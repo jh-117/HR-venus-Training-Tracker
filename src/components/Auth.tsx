@@ -35,7 +35,7 @@ export function Auth() {
     setLoading(false)
   }
 
-  return (
+    return (
     <>
       <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-center p-4 pb-20">
         <div className="w-full max-w-md">
@@ -46,12 +46,14 @@ export function Auth() {
                 <Folder className="h-11 w-11" />
               </div>
             </div>
+
             <h1
               className="font-black tracking-tight text-slate-100 mb-2"
               style={{ fontSize: 'clamp(2rem, 6vw, 4rem)' }}
             >
               HR<span className="text-slate-300">Venus</span>
             </h1>
+
             <p className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-400">
               Training Action Tracker
             </p>
@@ -64,6 +66,7 @@ export function Auth() {
             </h2>
 
             <form onSubmit={handleSubmit} className="space-y-4">
+              {/* Email */}
               <div className="space-y-2">
                 <Label htmlFor="email" className="text-slate-200">Email</Label>
                 <Input
@@ -77,6 +80,7 @@ export function Auth() {
                 />
               </div>
 
+              {/* Password */}
               <div className="space-y-2">
                 <Label htmlFor="password" className="text-slate-200">Password</Label>
                 <Input
@@ -91,9 +95,45 @@ export function Auth() {
                 />
               </div>
 
-              {error && <div className="bg-red-500/10 border border-red-500/50 rounded-lg p-3 text-red-400 text-sm">{error}</div>}
-              {message && <div className="bg-green-500/10 border border-green-500/50 rounded-lg p-3 text-green-400 text-sm">{message}</div>}
+              {/* PDPA / Privacy consent */}
+              {isSignUp && (
+                <div className="flex items-start gap-3 mt-2">
+                  <input
+                    id="pdpaConsent"
+                    type="checkbox"
+                    checked={pdpaConsent}
+                    onChange={(e) => setPdpaConsent(e.target.checked)}
+                    className="mt-1 w-4 h-4 rounded border-slate-600 bg-slate-900 text-blue-600 focus:ring-blue-600 cursor-pointer"
+                  />
 
+                  <label htmlFor="pdpaConsent" className="text-sm text-slate-300 leading-relaxed">
+                    I agree to the{' '}
+                    <button
+                      type="button"
+                      onClick={() => setShowPDPAModal(true)}
+                      className="text-blue-400 underline underline-offset-2 hover:text-blue-300 transition-colors"
+                    >
+                      Privacy Policy
+                    </button>{' '}
+                    and consent to the collection and use of my personal data as described.
+                  </label>
+                </div>
+              )}
+
+              {/* Error / Message */}
+              {error && (
+                <div className="bg-red-500/10 border border-red-500/50 rounded-lg p-3 text-red-400 text-sm">
+                  {error}
+                </div>
+              )}
+
+              {message && (
+                <div className="bg-green-500/10 border border-green-500/50 rounded-lg p-3 text-green-400 text-sm">
+                  {message}
+                </div>
+              )}
+
+              {/* Button */}
               <Button
                 type="submit"
                 disabled={loading}
@@ -103,10 +143,16 @@ export function Auth() {
               </Button>
             </form>
 
+            {/* Switch mode */}
             <div className="mt-6 text-center">
               <button
                 type="button"
-                onClick={() => { setIsSignUp(!isSignUp); setError(''); setMessage(''); }}
+                onClick={() => {
+                  setIsSignUp(!isSignUp)
+                  setError('')
+                  setMessage('')
+                  setPdpaConsent(false)
+                }}
                 className="text-sm text-slate-400 hover:text-slate-300"
               >
                 {isSignUp ? 'Already have an account? Sign in' : "Don't have an account? Sign up"}
@@ -115,6 +161,9 @@ export function Auth() {
           </div>
         </div>
       </div>
+
+      {/* PDPA Modal */}
+      <PDPAModal isOpen={showPDPAModal} onClose={() => setShowPDPAModal(false)} />
     </>
   )
 }
