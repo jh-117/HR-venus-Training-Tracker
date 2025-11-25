@@ -2,163 +2,169 @@ import React from "react";
 
 const HRVenusPDPA = () => {
   return (
-    <div style={{ padding: "20px", maxWidth: "800px", margin: "0 auto" }}>
-      <h2 style={{ textAlign: "center" }}>HRVenus PDPA Compliance</h2>
+    <div
+      style={{
+        padding: "20px",
+        maxWidth: "900px",
+        margin: "0 auto",
+        lineHeight: "1.7",
+      }}
+    >
+      <h1 style={{ textAlign: "center", marginBottom: "30px" }}>
+        HRVenus PDPA Compliance & Privacy Policy
+      </h1>
 
+      {/* INTRODUCTION */}
       <section>
-        <h3>Introduction</h3>
+        <h2>Introduction</h2>
         <p>
-          HRVenus is committed to fulfilling its responsibilities under
-          Malaysia's Personal Data Protection Act 2010 (Act 709). We respect the
-          privacy of all HR users and employees whose information is processed
-          through the HRVenus platform. This policy outlines how personal data
-          is collected, used, stored, and protected as part of HR task
-          management, employee administration, and workflow operations.
+          HRVenus is committed to complying with Malaysia's Personal Data
+          Protection Act 2010 (Act 709). We respect the privacy of all HR users
+          and employees whose personal information is processed through the
+          HRVenus platform. This Privacy Policy explains how data is collected,
+          used, stored, and protected as part of HR task management, employee
+          workflows, and administrative functions.
         </p>
       </section>
 
+      {/* DATA COLLECTION */}
       <section>
-        <h3>1. Data Collection</h3>
-        <p>We collect and process the following types of personal data:</p>
+        <h2>1. Personal Data Collection</h2>
+        <p>The HRVenus system may collect and process the following data:</p>
         <ul>
-          <li>HR admin and user information (name, email, role)</li>
-          <li>Employee personal details (name, position, department)</li>
+          <li>HR admin and user details (name, email, role)</li>
+          <li>Employee information (name, department, position)</li>
+          <li>Task assignments, workflow logs, deadlines</li>
+          <li>Performance-related notes (if entered by HR)</li>
           <li>
-            Task-related information (assignments, deadlines, progress logs)
+            Attendance, leave, and internal HR documentation (if enabled)
           </li>
-          <li>
-            Employee performance notes or records (if entered by HR personnel)
-          </li>
-          <li>
-            Attendance, leave, and internal documentation (if features are
-            enabled)
-          </li>
-          <li>System usage logs and device information for security</li>
-          <li>Uploaded files or documents for HR processing</li>
+          <li>System access logs, device information, and security metadata</li>
+          <li>Uploaded HR documents (e.g., memos, forms, approvals)</li>
         </ul>
       </section>
 
+      {/* PURPOSE */}
       <section>
-        <h3>2. Purpose of Collection</h3>
-        <p>Your personal data is collected for the following purposes:</p>
+        <h2>2. Purpose of Data Processing</h2>
+        <p>Personal data is collected and processed for the following:</p>
         <ul>
-          <li>To manage HR tasks and workflows efficiently</li>
-          <li>To assign and track employee-related responsibilities</li>
-          <li>To maintain accurate employee records and administrative data</li>
-          <li>To facilitate internal communication and HR decision-making</li>
-          <li>To generate HR reports and performance insights</li>
-          <li>To ensure system integrity, authentication, and access control</li>
+          <li>HR task management and workflow operations</li>
+          <li>Employee record management and HR administration</li>
+          <li>Performance review tracking and HR decision support</li>
+          <li>Internal communication and operational coordination</li>
+          <li>Generating HR analytics and organizational insights</li>
+          <li>Platform security, authentication, and role-based access</li>
+          <li>To enhance system features and improve user experience</li>
+        </ul>
+      </section>
+
+      {/* PDPA RIGHTS */}
+      <section>
+        <h2>3. Rights Under Malaysia PDPA</h2>
+        <p>
+          Individuals whose data is processed through HRVenus have the right to:
+        </p>
+        <ul>
+          <li>Request access to their personal data</li>
+          <li>Request corrections to inaccurate or incomplete data</li>
           <li>
-            To improve the functionality, security, and performance of the
-            platform
+            Withdraw consent for data processing (subject to HR policies)
           </li>
+          <li>Request deletion of data no longer required</li>
+          <li>Request a copy of their personal data (data portability)</li>
         </ul>
+        <p>
+          Some rights may be limited due to employment regulations or
+          organizational data retention requirements.
+        </p>
       </section>
 
+      {/* SECURITY & RETENTION */}
       <section>
-        <h3>3. Your Rights Under PDPA</h3>
-        <p>
-          Under Malaysia’s PDPA, users and employees whose data is managed
-          through HRVenus have the right to:
-        </p>
+        <h2>4. Data Security & Retention</h2>
+        <p>HRVenus applies strict security practices including:</p>
         <ul>
-          <li>Request access to personal data stored in the system</li>
-          <li>Request correction of inaccurate or incomplete information</li>
-          <li>Withdraw consent for data processing (subject to HR policies)</li>
-          <li>Request deletion of unnecessary or outdated data</li>
-          <li>Request a copy of personal data held (data portability)</li>
+          <li>Encrypted data storage and secure transmission</li>
+          <li>Role-based access control (RBAC)</li>
+          <li>Secure authentication and system audit trails</li>
         </ul>
         <p>
-          Certain rights may be limited in compliance with the
-          organization’s legal or HR retention requirements.
+          Data retention follows the organization’s HR policies, legal
+          obligations, and operational needs. Once data is no longer required,
+          it will be securely removed.
         </p>
       </section>
 
+      {/* EMPLOYEE DATA PROCESSING */}
       <section>
-        <h3>4. Data Security and Retention</h3>
+        <h2>5. Employee Data Processing</h2>
         <p>
-          HRVenus implements strict security measures to protect personal data,
-          including encrypted storage, role-based access control, and secure
-          authentication. Data retention is based on HR operational
-          requirements, employment regulations, and legal obligations.
-        </p>
-        <p>
-          Once data is no longer required, it will be securely deleted according
-          to internal data retention policies.
-        </p>
-      </section>
-
-      <section>
-        <h3>5. Employee Data Processing</h3>
-        <p>
-          HRVenus acts as a system that enables organizations to manage HR
-          operations. The company using HRVenus remains the primary data
+          HRVenus functions as a platform enabling organizations to manage HR
+          operations. The organization using HRVenus remains the primary data
           controller. HRVenus ensures:
         </p>
         <ul>
-          <li>No employee data is sold or disclosed to third parties</li>
+          <li>No employee data is sold to third parties</li>
           <li>
-            Uploaded documents and records are only accessible to authorized HR
-            personnel
+            HR documents and records are only accessible to authorized personnel
           </li>
           <li>
-            Sensitive data (e.g., performance notes, internal memos) is stored
-            securely
+            Sensitive data (e.g., internal notes) is stored safely and
+            confidentially
           </li>
           <li>
-            Only anonymized usage data may be used to improve the platform
+            Only anonymized, non-identifiable usage data may be used for system
+            improvement
           </li>
         </ul>
       </section>
 
+      {/* DATA SHARING */}
       <section>
-        <h3>6. Data Sharing and Disclosure</h3>
-        <p>
-          HRVenus does not sell or share personal data for advertising or
-          external marketing. Data may only be disclosed to:
-        </p>
+        <h2>6. Data Sharing & Disclosure</h2>
+        <p>HRVenus does not share data for advertising or external marketing.</p>
+        <p>Data may only be disclosed to:</p>
         <ul>
           <li>Authorized HR personnel within your organization</li>
           <li>
-            Technical service providers (e.g., cloud hosting) strictly for
-            platform operation
+            Technical service providers (cloud hosting, infrastructure) strictly
+            for platform operation
           </li>
-          <li>
-            Legal or regulatory authorities when required by law
-          </li>
+          <li>Regulatory or legal authorities when required by law</li>
         </ul>
-        <p>
-          All third-party partners are required to follow strict data protection
-          standards.
-        </p>
       </section>
 
+      {/* CONTACT */}
       <section>
-        <h3>7. Contact Information</h3>
+        <h2>7. Contact for PDPA Requests</h2>
         <p>
-          For inquiries regarding PDPA compliance, data access, or corrections,
-          you may contact your organization’s Data Protection Officer (DPO) or
-          reach us through the HRVenus support channel.
+          For PDPA inquiries, data access, corrections, or privacy concerns,
+          users may contact:
         </p>
-      </section>
-
-      <section>
-        <h3>8. Updates to This Policy</h3>
-        <p>
-          HRVenus reserves the right to update this Privacy Policy from time to
-          time to reflect new features, legal requirements, or improvements in
-          data management practices. Users will be notified of significant
-          changes within the platform.
-        </p>
-      </section>
-
-      <section style={{ marginTop: "30px" }}>
-        <h3>Your Data Protection Rights Summary</h3>
         <ul>
-          <li>Access your HR and account data</li>
-          <li>Request corrections</li>
-          <li>View assigned tasks and performance-related entries</li>
-          <li>Request deletion where applicable</li>
+          <li>Your organization’s Data Protection Officer (DPO)</li>
+          <li>The HRVenus support team</li>
+        </ul>
+      </section>
+
+      {/* UPDATES */}
+      <section>
+        <h2>8. Updates to This Policy</h2>
+        <p>
+          HRVenus may update this Privacy Policy periodically due to new
+          features, legal requirements, or improvements in data practices.
+          Significant changes will be communicated through the platform.
+        </p>
+      </section>
+
+      {/* SUMMARY */}
+      <section style={{ marginTop: "30px" }}>
+        <h2>Summary of Your Data Rights</h2>
+        <ul>
+          <li>Access your account and HR records</li>
+          <li>Request data corrections</li>
+          <li>Request deletion when allowed</li>
           <li>Control how your employee data is used</li>
         </ul>
       </section>
