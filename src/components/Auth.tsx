@@ -7,7 +7,7 @@ import { Folder } from 'lucide-react'
 import kadoshLogo from '../assets/kadoshAI.png'
 import { PDPAModal } from './PDPAModel'
 import BackgroundMusic from './components/BackgroundMusic';
-import themeMusic from '../assets/scan-theme.mp3';
+import themeMusic from '../assets/training-theme.mp3';
 
 export function Auth() {
   // ✅ All hooks must be inside the component
