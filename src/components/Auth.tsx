@@ -49,7 +49,7 @@ export function Auth() {
   return (
     <>
       <div className="min-h-screen bg-slate-950 flex flex-col">
-        <BackgroundMusic src={themeMusic} />
+        
         <div className="flex-1 flex items-center justify-center p-4">
           <div className="w-full max-w-md">
             {/* Header */}
@@ -74,6 +74,7 @@ export function Auth() {
 
             {/* Auth Form */}
             <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl">
+              <BackgroundMusic src={themeMusic} />
               <h2 className="text-xl font-bold text-slate-100 mb-4">
                 {isSignUp ? 'Create Account' : 'Welcome Back'}
               </h2>
