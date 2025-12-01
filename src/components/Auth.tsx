@@ -6,7 +6,7 @@ import { useAuth } from '../contexts/AuthContext'
 import { Folder } from 'lucide-react'
 import kadoshLogo from '../assets/kadoshAI.png'
 import { PDPAModal } from './PDPAModel'
-import BackgroundMusic from './components/BackgroundMusic';
+import BackgroundMusic from './BackgroundMusic';
 import themeMusic from '../assets/training-theme.mp3';
 
 export function Auth() {
