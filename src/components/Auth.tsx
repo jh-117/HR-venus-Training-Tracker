@@ -6,7 +6,7 @@ import { useAuth } from '../contexts/AuthContext'
 import { Folder } from 'lucide-react'
 import kadoshLogo from '../assets/kadoshAI.png'
 import { PDPAModal } from './PDPAModel'
-import BackgroundMusic from './BackgroundMusic';
+import BackgroundMusic from '.BackgroundMusic';
 import themeMusic from '../assets/training-theme.mp3';
 
 export function Auth() {
@@ -49,7 +49,7 @@ export function Auth() {
   return (
     <>
       <div className="min-h-screen bg-slate-950 flex flex-col">
-        
+        <BackgroundMusic src={themeMusic} />
         <div className="flex-1 flex items-center justify-center p-4">
           <div className="w-full max-w-md">
             {/* Header */}
@@ -74,7 +74,6 @@ export function Auth() {
 
             {/* Auth Form */}
             <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl">
-              
               <h2 className="text-xl font-bold text-slate-100 mb-4">
                 {isSignUp ? 'Create Account' : 'Welcome Back'}
               </h2>
@@ -178,7 +177,6 @@ export function Auth() {
 
         {/* Powered by section at the bottom */}
         <div className="py-6 border-t border-slate-800 text-center bg-slate-950">
-          <BackgroundMusic src={themeMusic} />
           <p className="text-sm text-slate-400 mb-3">Powered by</p>
           <img
             src={kadoshLogo}
