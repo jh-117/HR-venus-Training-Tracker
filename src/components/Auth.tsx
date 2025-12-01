@@ -74,7 +74,7 @@ export function Auth() {
 
             {/* Auth Form */}
             <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl">
-              <BackgroundMusic src={themeMusic} />
+              
               <h2 className="text-xl font-bold text-slate-100 mb-4">
                 {isSignUp ? 'Create Account' : 'Welcome Back'}
               </h2>
@@ -178,6 +178,7 @@ export function Auth() {
 
         {/* Powered by section at the bottom */}
         <div className="py-6 border-t border-slate-800 text-center bg-slate-950">
+          <BackgroundMusic src={themeMusic} />
           <p className="text-sm text-slate-400 mb-3">Powered by</p>
           <img
             src={kadoshLogo}
