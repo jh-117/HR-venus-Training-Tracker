@@ -62,13 +62,13 @@ export function Auth() {
 
         {/* Animated Background Blobs */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 -left-20 w-72 h-72 bg-blue-600/20 rounded-full blur-3xl animate-blob-float" />
-          <div className="absolute bottom-20 -right-20 w-96 h-96 bg-slate-700/30 rounded-full blur-3xl animate-blob-float" style={{ animationDelay: '2s' }} />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl animate-blob-float" style={{ animationDelay: '4s' }} />
+          <div className="absolute top-20 -left-20 w-96 h-96 bg-blue-600/30 rounded-full blur-3xl animate-blob-float" />
+          <div className="absolute bottom-20 -right-20 w-[500px] h-[500px] bg-blue-700/25 rounded-full blur-3xl animate-blob-float" style={{ animationDelay: '2s' }} />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-blue-500/20 rounded-full blur-3xl animate-blob-float" style={{ animationDelay: '4s' }} />
         </div>
 
         {/* Grid Pattern Overlay */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(148,163,184,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.03)_1px,transparent_1px)] bg-[size:64px_64px] pointer-events-none" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(148,163,184,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.05)_1px,transparent_1px)] bg-[size:64px_64px] pointer-events-none" />
 
         <div className="flex-1 flex items-center justify-center p-4 relative z-10">
           <div className="w-full max-w-6xl">
@@ -95,10 +95,10 @@ export function Auth() {
             {/* Auth Container */}
             <div className="relative mx-auto" style={{ maxWidth: '900px' }}>
               {/* Desktop Split Panel Layout */}
-              <div className="hidden md:grid md:grid-cols-2 rounded-3xl overflow-hidden shadow-2xl border border-slate-800/50 bg-gradient-to-br from-slate-900 to-slate-800 relative">
+              <div className="hidden md:grid md:grid-cols-2 rounded-3xl overflow-hidden shadow-2xl border border-slate-800/50 bg-gradient-to-br from-slate-900 to-slate-800 relative min-h-[600px]">
                 {/* Sign In Panel */}
-                <div className={`p-8 lg:p-12 transition-all duration-500 ${isSignUp ? 'opacity-50' : 'opacity-100'}`}>
-                  <div className="animate-slide-in-left">
+                <div className={`p-8 lg:p-12 transition-all duration-500 ${isSignUp ? 'pointer-events-none' : 'pointer-events-auto'}`}>
+                  <div className="h-full flex flex-col">
                     <h2 className="text-3xl font-bold text-slate-100 mb-2">
                       Welcome Back
                     </h2>
@@ -106,8 +106,7 @@ export function Auth() {
                       Sign in to continue your journey
                     </p>
 
-                    {!isSignUp && (
-                      <form onSubmit={handleSubmit} className="space-y-6">
+                    <form onSubmit={handleSubmit} className="space-y-6 flex-1">
                         <div className="space-y-2">
                           <Label htmlFor="signin-email" className="text-slate-200 text-sm font-medium">
                             Email Address
@@ -166,19 +165,18 @@ export function Auth() {
 
                         <Button
                           type="submit"
-                          disabled={loading}
-                          className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white h-12 rounded-xl font-semibold shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 transition-all hover:scale-[1.02]"
+                          disabled={loading || isSignUp}
+                          className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white h-12 rounded-xl font-semibold shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 transition-all hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                         >
-                          {loading ? 'Signing In...' : 'Sign In'}
+                          {loading && !isSignUp ? 'Signing In...' : 'Sign In'}
                         </Button>
                       </form>
-                    )}
                   </div>
                 </div>
 
                 {/* Sign Up Panel */}
-                <div className={`p-8 lg:p-12 transition-all duration-500 ${!isSignUp ? 'opacity-50' : 'opacity-100'}`}>
-                  <div className="animate-slide-in-right">
+                <div className={`p-8 lg:p-12 transition-all duration-500 ${isSignUp ? 'pointer-events-auto' : 'pointer-events-none'}`}>
+                  <div className="h-full flex flex-col">
                     <h2 className="text-3xl font-bold text-slate-100 mb-2">
                       Create Account
                     </h2>
@@ -186,8 +184,7 @@ export function Auth() {
                       Start your training journey today
                     </p>
 
-                    {isSignUp && (
-                      <form onSubmit={handleSubmit} className="space-y-6">
+                    <form onSubmit={handleSubmit} className="space-y-6 flex-1">
                         <div className="space-y-2">
                           <Label htmlFor="signup-email" className="text-slate-200 text-sm font-medium">
                             Email Address
@@ -267,27 +264,26 @@ export function Auth() {
 
                         <Button
                           type="submit"
-                          disabled={loading}
-                          className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white h-12 rounded-xl font-semibold shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 transition-all hover:scale-[1.02]"
+                          disabled={loading || !isSignUp}
+                          className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white h-12 rounded-xl font-semibold shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 transition-all hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                         >
-                          {loading ? 'Creating Account...' : 'Create Account'}
+                          {loading && isSignUp ? 'Creating Account...' : 'Create Account'}
                         </Button>
                       </form>
-                    )}
                   </div>
                 </div>
 
                 {/* Sliding Overlay Panel */}
                 <div
-                  className={`absolute top-0 h-full w-1/2 transition-all duration-700 ease-in-out ${
+                  className={`absolute top-0 h-full w-1/2 transition-all duration-700 ease-in-out z-10 ${
                     isSignUp ? 'left-0' : 'left-1/2'
                   }`}
                 >
-                  <div className="glass-effect h-full flex items-center justify-center p-12 relative overflow-hidden">
+                  <div className="h-full flex items-center justify-center p-8 lg:p-12 relative overflow-hidden bg-gradient-to-br from-blue-600/30 via-blue-700/25 to-slate-800/30 backdrop-blur-xl border-2 border-blue-500/20 shadow-2xl">
                     {/* Decorative elements */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-slate-800/20" />
-                    <div className="absolute top-10 right-10 w-32 h-32 bg-blue-500/20 rounded-full blur-2xl animate-pulse" />
-                    <div className="absolute bottom-10 left-10 w-40 h-40 bg-slate-600/20 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '1s' }} />
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-600/30 to-blue-800/20" />
+                    <div className="absolute top-10 right-10 w-40 h-40 bg-blue-400/30 rounded-full blur-3xl animate-pulse" />
+                    <div className="absolute bottom-10 left-10 w-48 h-48 bg-blue-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
 
                     <div className="relative z-10 text-center">
                       <h3 className="text-2xl lg:text-3xl font-bold text-white mb-4">
