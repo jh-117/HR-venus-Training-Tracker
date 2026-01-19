@@ -10,32 +10,55 @@ interface LandingPageProps {
 export function LandingPage({ onGetStarted }: LandingPageProps) {
   return (
     <div
-      className="min-h-screen"
       style={{
         backgroundColor: '#020617',
         color: '#f1f5f9',
         minHeight: '100vh'
       }}
     >
-      <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12 py-12">
+      <div
+        style={{
+          maxWidth: '80rem',
+          margin: '0 auto',
+          padding: '3rem 2rem'
+        }}
+      >
 
         {/* NAV */}
-        <nav className="flex items-center justify-between mb-28">
-          <div className="flex items-center gap-4">
+        <nav
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            marginBottom: '7rem'
+          }}
+        >
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '1rem'
+            }}
+          >
             <div
-              className="flex h-12 w-12 items-center justify-center rounded-xl shadow-lg"
               style={{
+                display: 'flex',
+                height: '3rem',
+                width: '3rem',
+                alignItems: 'center',
+                justifyContent: 'center',
+                borderRadius: '0.75rem',
                 background: 'linear-gradient(135deg, #3b82f6, #6366f1)',
                 boxShadow: '0 10px 15px -3px rgba(59, 130, 246, 0.3)'
               }}
             >
-              <Folder className="h-6 w-6" style={{ color: '#ffffff' }} />
+              <Folder style={{ height: '1.5rem', width: '1.5rem', color: '#ffffff' }} />
             </div>
             <span
-              className="font-bold"
               style={{
                 color: '#f1f5f9',
-                fontSize: '1.5rem'
+                fontSize: '1.5rem',
+                fontWeight: '700'
               }}
             >
               HR<span style={{ color: '#94a3b8' }}>Venus</span>
@@ -45,10 +68,12 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
           <Button
             variant="outline"
             onClick={onGetStarted}
-            className="rounded-xl px-6"
             style={{
               borderColor: '#334155',
-              color: '#cbd5e1'
+              color: '#cbd5e1',
+              borderRadius: '0.75rem',
+              paddingLeft: '1.5rem',
+              paddingRight: '1.5rem'
             }}
           >
             Sign In
@@ -56,12 +81,19 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
         </nav>
 
         {/* HERO */}
-        <section className="text-center mb-36">
+        <section
+          style={{
+            textAlign: 'center',
+            marginBottom: '9rem'
+          }}
+        >
           <h1
-            className="font-extrabold tracking-tight mb-8"
             style={{
               fontSize: 'clamp(3rem, 8vw, 4.5rem)',
-              lineHeight: '1.1'
+              lineHeight: '1.1',
+              fontWeight: '800',
+              letterSpacing: '-0.025em',
+              marginBottom: '2rem'
             }}
           >
             <span
@@ -77,8 +109,9 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
           </h1>
 
           <p
-            className="max-w-3xl mx-auto mb-12"
             style={{
+              maxWidth: '48rem',
+              margin: '0 auto 3rem',
               color: '#94a3b8',
               fontSize: 'clamp(1.125rem, 2vw, 1.5rem)',
               lineHeight: '1.6'
@@ -90,22 +123,36 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
           <Button
             size="lg"
             onClick={onGetStarted}
-            className="px-12 py-7 rounded-xl transition"
             style={{
               background: 'linear-gradient(to right, #3b82f6, #6366f1)',
               color: '#ffffff',
               boxShadow: '0 20px 25px -5px rgba(59, 130, 246, 0.3)',
               fontSize: '1.125rem',
-              fontWeight: '600'
+              fontWeight: '600',
+              paddingLeft: '3rem',
+              paddingRight: '3rem',
+              paddingTop: '1.75rem',
+              paddingBottom: '1.75rem',
+              borderRadius: '0.75rem',
+              display: 'inline-flex',
+              alignItems: 'center',
+              transition: 'all 0.15s'
             }}
           >
             Get Started
-            <ArrowRight className="ml-3 h-5 w-5" />
+            <ArrowRight style={{ marginLeft: '0.75rem', height: '1.25rem', width: '1.25rem' }} />
           </Button>
         </section>
 
         {/* FEATURES */}
-        <section className="grid gap-8 lg:grid-cols-3 mb-40">
+        <section
+          style={{
+            display: 'grid',
+            gap: '2rem',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            marginBottom: '10rem'
+          }}
+        >
           {[
             {
               icon: <CheckCircle2 />,
@@ -125,34 +172,47 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
           ].map((item, i) => (
             <div
               key={i}
-              className="rounded-3xl p-10 hover:-translate-y-1 transition"
               style={{
                 backgroundColor: 'rgba(15, 23, 42, 0.6)',
                 border: '1px solid rgba(30, 41, 59, 0.8)',
-                backdropFilter: 'blur(10px)'
+                backdropFilter: 'blur(10px)',
+                borderRadius: '1.5rem',
+                padding: '2rem',
+                transition: 'transform 0.15s',
+                cursor: 'default'
               }}
+              onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-0.25rem)'}
+              onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
             >
               <div
-                className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl"
                 style={{
+                  marginBottom: '1.5rem',
+                  display: 'flex',
+                  height: '4rem',
+                  width: '4rem',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  borderRadius: '1rem',
                   backgroundColor: 'rgba(59, 130, 246, 0.1)',
                   color: '#60a5fa'
                 }}
               >
-                {React.cloneElement(item.icon, { className: "h-8 w-8" })}
+                {React.cloneElement(item.icon, {
+                  style: { height: '2rem', width: '2rem' }
+                })}
               </div>
               <h3
-                className="font-semibold mb-3"
                 style={{
                   color: '#f1f5f9',
                   fontSize: '1.5rem',
-                  lineHeight: '1.3'
+                  lineHeight: '1.3',
+                  fontWeight: '600',
+                  marginBottom: '0.75rem'
                 }}
               >
                 {item.title}
               </h3>
               <p
-                className="leading-relaxed"
                 style={{
                   color: '#94a3b8',
                   fontSize: '1rem',
@@ -167,25 +227,30 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
 
         {/* CTA */}
         <section
-          className="rounded-3xl p-16 text-center mb-28"
           style={{
+            borderRadius: '1.5rem',
+            padding: '3rem 2rem',
+            textAlign: 'center',
+            marginBottom: '7rem',
             background: 'linear-gradient(to right, rgba(59, 130, 246, 0.1), rgba(99, 102, 241, 0.1))',
             border: '1px solid rgba(59, 130, 246, 0.2)'
           }}
         >
           <h2
-            className="font-bold mb-6"
             style={{
               color: '#f1f5f9',
               fontSize: 'clamp(1.875rem, 4vw, 2.25rem)',
-              lineHeight: '1.2'
+              lineHeight: '1.2',
+              fontWeight: '700',
+              marginBottom: '1.5rem'
             }}
           >
             Ready to optimize your training workflow?
           </h2>
           <p
-            className="max-w-2xl mx-auto mb-10"
             style={{
+              maxWidth: '42rem',
+              margin: '0 auto 2.5rem',
               color: '#94a3b8',
               fontSize: '1.125rem',
               lineHeight: '1.75'
@@ -196,13 +261,17 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
           <Button
             size="lg"
             onClick={onGetStarted}
-            className="px-12 py-7 rounded-xl"
             style={{
               background: 'linear-gradient(to right, #3b82f6, #6366f1)',
               color: '#ffffff',
               boxShadow: '0 10px 15px -3px rgba(59, 130, 246, 0.3)',
               fontSize: '1.125rem',
-              fontWeight: '600'
+              fontWeight: '600',
+              paddingLeft: '3rem',
+              paddingRight: '3rem',
+              paddingTop: '1.75rem',
+              paddingBottom: '1.75rem',
+              borderRadius: '0.75rem'
             }}
           >
             Create Your Account
@@ -210,10 +279,16 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
         </section>
 
         {/* FOOTER */}
-        <footer className="pt-10 text-center" style={{ borderTop: '1px solid rgba(30, 41, 59, 0.8)' }}>
+        <footer
+          style={{
+            paddingTop: '2.5rem',
+            textAlign: 'center',
+            borderTop: '1px solid rgba(30, 41, 59, 0.8)'
+          }}
+        >
           <p
-            className="mb-4"
             style={{
+              marginBottom: '1rem',
               color: '#64748b',
               fontSize: '0.875rem'
             }}
@@ -223,7 +298,14 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
           <img
             src={kadoshLogo}
             alt="Kadosh AI"
-            className="mx-auto h-10 opacity-80 hover:opacity-100 transition"
+            style={{
+              margin: '0 auto',
+              height: '2.5rem',
+              opacity: '0.8',
+              transition: 'opacity 0.15s'
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.opacity = '1'}
+            onMouseLeave={(e) => e.currentTarget.style.opacity = '0.8'}
           />
         </footer>
       </div>
