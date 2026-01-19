@@ -46,33 +46,33 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
           </Button>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 mb-20">
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 hover:border-blue-600/50 transition-colors">
-            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-600/20 text-blue-500 mb-4">
-              <CheckCircle2 className="h-6 w-6" />
+        <div className="flex flex-col lg:flex-row gap-6 mb-20">
+          <div className="flex-1 bg-gradient-to-br from-slate-900 to-slate-900/50 border-2 border-slate-800 rounded-3xl p-12 hover:border-blue-600/50 hover:shadow-2xl hover:shadow-blue-600/10 transition-all group">
+            <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-600/20 text-blue-500 mb-6 group-hover:scale-110 transition-transform">
+              <CheckCircle2 className="h-8 w-8" />
             </div>
-            <h3 className="text-xl font-bold mb-3">Task Management</h3>
-            <p className="text-slate-400">
+            <h3 className="text-2xl font-bold mb-4">Task Management</h3>
+            <p className="text-slate-400 text-lg leading-relaxed">
               Organize and track all pre-training activities through customizable phases and steps
             </p>
           </div>
 
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 hover:border-blue-600/50 transition-colors">
-            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-600/20 text-blue-500 mb-4">
-              <BarChart3 className="h-6 w-6" />
+          <div className="flex-1 bg-gradient-to-br from-slate-900 to-slate-900/50 border-2 border-slate-800 rounded-3xl p-12 hover:border-blue-600/50 hover:shadow-2xl hover:shadow-blue-600/10 transition-all group">
+            <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-600/20 text-blue-500 mb-6 group-hover:scale-110 transition-transform">
+              <BarChart3 className="h-8 w-8" />
             </div>
-            <h3 className="text-xl font-bold mb-3">Progress Tracking</h3>
-            <p className="text-slate-400">
+            <h3 className="text-2xl font-bold mb-4">Progress Tracking</h3>
+            <p className="text-slate-400 text-lg leading-relaxed">
               Monitor completion rates and identify bottlenecks with real-time analytics
             </p>
           </div>
 
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 hover:border-blue-600/50 transition-colors">
-            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-600/20 text-blue-500 mb-4">
-              <Users className="h-6 w-6" />
+          <div className="flex-1 bg-gradient-to-br from-slate-900 to-slate-900/50 border-2 border-slate-800 rounded-3xl p-12 hover:border-blue-600/50 hover:shadow-2xl hover:shadow-blue-600/10 transition-all group">
+            <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-600/20 text-blue-500 mb-6 group-hover:scale-110 transition-transform">
+              <Users className="h-8 w-8" />
             </div>
-            <h3 className="text-xl font-bold mb-3">Team Collaboration</h3>
-            <p className="text-slate-400">
+            <h3 className="text-2xl font-bold mb-4">Team Collaboration</h3>
+            <p className="text-slate-400 text-lg leading-relaxed">
               Coordinate training preparations efficiently with your entire team
             </p>
           </div>
