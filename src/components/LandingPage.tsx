@@ -16,6 +16,7 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
         minHeight: '100vh'
       }}
     >
+       <BackgroundMusic src={themeMusic} />
       <div
         style={{
           maxWidth: '80rem',
