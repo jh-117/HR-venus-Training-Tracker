@@ -31,7 +31,13 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
             >
               <Folder className="h-6 w-6" style={{ color: '#ffffff' }} />
             </div>
-            <span className="text-2xl font-bold" style={{ color: '#f1f5f9' }}>
+            <span
+              className="font-bold"
+              style={{
+                color: '#f1f5f9',
+                fontSize: '1.5rem'
+              }}
+            >
               HR<span style={{ color: '#94a3b8' }}>Venus</span>
             </span>
           </div>
@@ -51,7 +57,13 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
 
         {/* HERO */}
         <section className="text-center mb-36">
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight mb-8">
+          <h1
+            className="font-extrabold tracking-tight mb-8"
+            style={{
+              fontSize: 'clamp(3rem, 8vw, 4.5rem)',
+              lineHeight: '1.1'
+            }}
+          >
             <span
               style={{
                 background: 'linear-gradient(to right, #60a5fa, #818cf8, #cbd5e1)',
@@ -65,8 +77,12 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
           </h1>
 
           <p
-            className="max-w-3xl mx-auto text-xl sm:text-2xl mb-12"
-            style={{ color: '#94a3b8' }}
+            className="max-w-3xl mx-auto mb-12"
+            style={{
+              color: '#94a3b8',
+              fontSize: 'clamp(1.125rem, 2vw, 1.5rem)',
+              lineHeight: '1.6'
+            }}
           >
             Streamline training preparation with structured tasks, visibility, and real-time progress.
           </p>
@@ -74,11 +90,13 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
           <Button
             size="lg"
             onClick={onGetStarted}
-            className="px-12 py-7 rounded-xl text-lg transition"
+            className="px-12 py-7 rounded-xl transition"
             style={{
               background: 'linear-gradient(to right, #3b82f6, #6366f1)',
               color: '#ffffff',
-              boxShadow: '0 20px 25px -5px rgba(59, 130, 246, 0.3)'
+              boxShadow: '0 20px 25px -5px rgba(59, 130, 246, 0.3)',
+              fontSize: '1.125rem',
+              fontWeight: '600'
             }}
           >
             Get Started
@@ -123,10 +141,24 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
               >
                 {React.cloneElement(item.icon, { className: "h-8 w-8" })}
               </div>
-              <h3 className="text-2xl font-semibold mb-3" style={{ color: '#f1f5f9' }}>
+              <h3
+                className="font-semibold mb-3"
+                style={{
+                  color: '#f1f5f9',
+                  fontSize: '1.5rem',
+                  lineHeight: '1.3'
+                }}
+              >
                 {item.title}
               </h3>
-              <p className="leading-relaxed" style={{ color: '#94a3b8' }}>
+              <p
+                className="leading-relaxed"
+                style={{
+                  color: '#94a3b8',
+                  fontSize: '1rem',
+                  lineHeight: '1.625'
+                }}
+              >
                 {item.desc}
               </p>
             </div>
@@ -141,20 +173,36 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
             border: '1px solid rgba(59, 130, 246, 0.2)'
           }}
         >
-          <h2 className="text-4xl font-bold mb-6" style={{ color: '#f1f5f9' }}>
+          <h2
+            className="font-bold mb-6"
+            style={{
+              color: '#f1f5f9',
+              fontSize: 'clamp(1.875rem, 4vw, 2.25rem)',
+              lineHeight: '1.2'
+            }}
+          >
             Ready to optimize your training workflow?
           </h2>
-          <p className="max-w-2xl mx-auto text-lg mb-10" style={{ color: '#94a3b8' }}>
+          <p
+            className="max-w-2xl mx-auto mb-10"
+            style={{
+              color: '#94a3b8',
+              fontSize: '1.125rem',
+              lineHeight: '1.75'
+            }}
+          >
             Teams trust HRVenus to run structured, accountable training preparation.
           </p>
           <Button
             size="lg"
             onClick={onGetStarted}
-            className="px-12 py-7 rounded-xl text-lg"
+            className="px-12 py-7 rounded-xl"
             style={{
               background: 'linear-gradient(to right, #3b82f6, #6366f1)',
               color: '#ffffff',
-              boxShadow: '0 10px 15px -3px rgba(59, 130, 246, 0.3)'
+              boxShadow: '0 10px 15px -3px rgba(59, 130, 246, 0.3)',
+              fontSize: '1.125rem',
+              fontWeight: '600'
             }}
           >
             Create Your Account
@@ -163,7 +211,15 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
 
         {/* FOOTER */}
         <footer className="pt-10 text-center" style={{ borderTop: '1px solid rgba(30, 41, 59, 0.8)' }}>
-          <p className="text-sm mb-4" style={{ color: '#64748b' }}>Powered by</p>
+          <p
+            className="mb-4"
+            style={{
+              color: '#64748b',
+              fontSize: '0.875rem'
+            }}
+          >
+            Powered by
+          </p>
           <img
             src={kadoshLogo}
             alt="Kadosh AI"
