@@ -9,7 +9,7 @@ interface LandingPageProps {
 
 export function LandingPage({ onGetStarted }: LandingPageProps) {
   return (
-     <BackgroundMusic src={themeMusic} />
+ 
     <div
       style={{
         backgroundColor: '#020617',
