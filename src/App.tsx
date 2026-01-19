@@ -3,6 +3,7 @@ import { Dashboard } from './components/Dashboard';
 import { TrackerBoard } from './components/TrackerBoard';
 import { CreateActivityModal } from './components/CreateActivityModal';
 import { Auth } from './components/Auth';
+import { LandingPage } from './components/LandingPage';
 import { Activity } from './lib/data';
 import { useAuth } from './contexts/AuthContext';
 import { supabase } from './lib/supabase';
@@ -16,6 +17,7 @@ export default function App() {
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [createMode, setCreateMode] = useState<'template' | 'scratch'>('template');
   const [loading, setLoading] = useState(true);
+  const [showLanding, setShowLanding] = useState(true);
 
   // Load activities from Supabase
   useEffect(() => {
@@ -245,6 +247,11 @@ export default function App() {
     );
   }
 
+  // Show landing page if not logged in and haven't clicked get started
+  if (!user && showLanding) {
+    return <LandingPage onGetStarted={() => setShowLanding(false)} />;
+  }
+
   // Show auth page if not logged in
   if (!user) {
     return (
@@ -252,7 +259,7 @@ export default function App() {
         <div className="flex-1">
           <Auth />
         </div>
-   
+
       </div>
     );
   }
