@@ -72,7 +72,7 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
             onClick={onGetStarted}
             style={{
               borderColor: '#334155',
-              color: '#cbd5e1',
+              color: '#0f1210',
               borderRadius: '0.75rem',
               paddingLeft: '1.5rem',
               paddingRight: '1.5rem'
