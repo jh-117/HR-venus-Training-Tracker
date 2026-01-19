@@ -9,6 +9,7 @@ interface LandingPageProps {
 
 export function LandingPage({ onGetStarted }: LandingPageProps) {
   return (
+     <BackgroundMusic src={themeMusic} />
     <div
       style={{
         backgroundColor: '#020617',
@@ -16,7 +17,7 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
         minHeight: '100vh'
       }}
     >
-       <BackgroundMusic src={themeMusic} />
+      
       <div
         style={{
           maxWidth: '80rem',
