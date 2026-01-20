@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "./ui/button";
 import { Folder, CheckCircle2, BarChart3, Users, ArrowRight } from "lucide-react";
 import kadoshLogo from "../assets/kadoshAI.png";
+import { PDPAModal } from './PDPAModel':
 
 interface LandingPageProps {
   onGetStarted: () => void;
