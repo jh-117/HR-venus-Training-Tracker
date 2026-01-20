@@ -30,8 +30,40 @@ export default function App() {
     }
   }, [user]);
 
+  // Check if current activity has passed deadline
+  useEffect(() => {
+    if (currentActivity && currentActivity.deadline) {
+      const now = new Date();
+      const deadline = new Date(currentActivity.deadline);
+
+      if (now > deadline && !currentActivity.archived) {
+        handleArchiveActivity(currentActivity.id, true);
+        setCurrentActivity(null);
+      }
+    }
+  }, [currentActivity]);
+
+  // Periodic check for expired activities (every minute)
+  useEffect(() => {
+    if (!user) return;
+
+    const checkInterval = setInterval(() => {
+      loadActivities();
+    }, 60000);
+
+    return () => clearInterval(checkInterval);
+  }, [user]);
+
   const loadActivities = async () => {
     try {
+      // Auto-archive activities that have passed their deadline
+      const now = new Date().toISOString();
+      await supabase
+        .from('activities')
+        .update({ archived: true })
+        .lt('deadline', now)
+        .eq('archived', false);
+
       // Fetch activities
       const { data: activitiesData, error: activitiesError } = await supabase
         .from('activities')
