@@ -4,6 +4,7 @@ import { TrackerBoard } from './components/TrackerBoard';
 import { CreateActivityModal } from './components/CreateActivityModal';
 import { Auth } from './components/Auth';
 import { LandingPage } from './components/LandingPage';
+import { PDPAModal } from './components/PDPAModel';
 import { Activity } from './lib/data';
 import { useAuth } from './contexts/AuthContext';
 import { supabase } from './lib/supabase';
@@ -18,6 +19,7 @@ export default function App() {
   const [createMode, setCreateMode] = useState<'template' | 'scratch'>('template');
   const [loading, setLoading] = useState(true);
   const [showLanding, setShowLanding] = useState(true);
+  const [isPDPAModalOpen, setIsPDPAModalOpen] = useState(false);
 
   // Load activities from Supabase
   useEffect(() => {
@@ -249,7 +251,18 @@ export default function App() {
 
   // Show landing page if not logged in and haven't clicked get started
   if (!user && showLanding) {
-    return <LandingPage onGetStarted={() => setShowLanding(false)} />;
+    return (
+      <>
+        <LandingPage
+          onGetStarted={() => setShowLanding(false)}
+          onPrivacyPolicyClick={() => setIsPDPAModalOpen(true)}
+        />
+        <PDPAModal
+          isOpen={isPDPAModalOpen}
+          onClose={() => setIsPDPAModalOpen(false)}
+        />
+      </>
+    );
   }
 
   // Show auth page if not logged in
