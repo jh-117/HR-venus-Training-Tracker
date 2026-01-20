@@ -36,7 +36,7 @@ const BackgroundMusic = ({ src }) => {
       onClick={toggleMusic}
       style={{
         position: 'fixed',
-        top: '1.5rem',
+        bottom: '1.5rem',
         left: '1.5rem',
         zIndex: 9999,
         padding: '0.75rem',
