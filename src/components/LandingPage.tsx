@@ -30,6 +30,7 @@ export function LandingPage({ onGetStarted, onPrivacyPolicyClick }: LandingPageP
           flex: '1'
         }}
       >
+        <BackgroundMusic src={themeMusic} />
         {/* NAV */}
         <nav
           style={{
