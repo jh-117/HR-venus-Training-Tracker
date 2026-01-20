@@ -5,27 +5,28 @@ import kadoshLogo from "../assets/kadoshAI.png";
 
 interface LandingPageProps {
   onGetStarted: () => void;
+  onPrivacyPolicyClick: () => void;
 }
 
-export function LandingPage({ onGetStarted }: LandingPageProps) {
+export function LandingPage({ onGetStarted, onPrivacyPolicyClick }: LandingPageProps) {
   return (
- 
     <div
       style={{
         backgroundColor: '#020617',
         color: '#f1f5f9',
-        minHeight: '100vh'
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column'
       }}
     >
-      
       <div
         style={{
           maxWidth: '80rem',
           margin: '0 auto',
-          padding: '3rem 2rem'
+          padding: '3rem 2rem',
+          flex: '1'
         }}
       >
-
         {/* NAV */}
         <nav
           style={{
@@ -279,38 +280,77 @@ export function LandingPage({ onGetStarted }: LandingPageProps) {
             Create Your Account
           </Button>
         </section>
+      </div>
 
-        {/* FOOTER */}
-        <footer
+      {/* FOOTER - Updated to match correct example structure */}
+      <footer
+        style={{
+          backgroundColor: '#0f172a',
+          borderTop: '1px solid #334155',
+          padding: '2rem 0'
+        }}
+      >
+        <div
           style={{
-            paddingTop: '2.5rem',
-            textAlign: 'center',
-            borderTop: '1px solid rgba(30, 41, 59, 0.8)'
+            maxWidth: '80rem',
+            margin: '0 auto',
+            padding: '0 2rem'
           }}
         >
-          <p
+          {/* Privacy Policy Link Section */}
+          <div
             style={{
-              marginBottom: '1rem',
-              color: '#64748b',
-              fontSize: '0.875rem'
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginBottom: '1.5rem'
             }}
           >
-            Powered by
-          </p>
-          <img
-            src={kadoshLogo}
-            alt="Kadosh AI"
+            <button
+              onClick={onPrivacyPolicyClick}
+              style={{
+                color: '#94a3b8',
+                fontSize: '1rem',
+                fontWeight: '500',
+                background: 'none',
+                border: 'none',
+                cursor: 'pointer',
+                padding: '0.5rem 1rem',
+                borderRadius: '0.375rem',
+                transition: 'color 0.15s ease'
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.color = '#60a5fa'}
+              onMouseLeave={(e) => e.currentTarget.style.color = '#94a3b8'}
+            >
+              Privacy Policy
+            </button>
+          </div>
+
+          {/* Copyright Footer Row */}
+          <div
             style={{
-              margin: '0 auto',
-              height: '2.5rem',
-              opacity: '0.8',
-              transition: 'opacity 0.15s'
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: '#64748b',
+              fontSize: '0.875rem',
+              gap: '0.75rem'
             }}
-            onMouseEnter={(e) => e.currentTarget.style.opacity = '1'}
-            onMouseLeave={(e) => e.currentTarget.style.opacity = '0.8'}
-          />
-        </footer>
-      </div>
+          >
+            <span>Copyright © {new Date().getFullYear()}</span>
+            <img
+              src={kadoshLogo}
+              alt="Kadosh AI"
+              style={{
+                height: '1.25rem',
+                width: 'auto'
+              }}
+            />
+            <span>All rights reserved</span>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
