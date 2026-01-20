@@ -9,6 +9,10 @@ interface LandingPageProps {
   onPrivacyPolicyClick: () => void;
 }
 
+  const [pdpaConsent, setPdpaConsent] = useState(false)
+  const [showPDPAModal, setShowPDPAModal] = useState(false)
+
+
 export function LandingPage({ onGetStarted, onPrivacyPolicyClick }: LandingPageProps) {
   return (
     <div
