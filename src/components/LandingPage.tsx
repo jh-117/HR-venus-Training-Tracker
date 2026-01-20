@@ -3,6 +3,8 @@ import { Button } from "./ui/button";
 import { Folder, CheckCircle2, BarChart3, Users, ArrowRight } from "lucide-react";
 import kadoshLogo from "../assets/kadoshAI.png";
 import { PDPAModal } from './PDPAModel';
+import BackgroundMusic from './BackgroundMusic';
+import themeMusic from '../assets/training-theme.mp3';
 
 interface LandingPageProps {
   onGetStarted: () => void;
