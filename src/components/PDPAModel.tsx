@@ -41,7 +41,7 @@ export function PDPAModal({ isOpen, onClose }: { isOpen: boolean; onClose: () =>
             fontWeight: 'bold',
             color: '#111827'
           }}>
-            HRVenus PDPA Policy
+            TickReady PDPA Policy
           </h2>
           <button
             onClick={onClose}
@@ -84,7 +84,7 @@ export function PDPAModal({ isOpen, onClose }: { isOpen: boolean; onClose: () =>
                 Introduction
               </h3>
               <p style={{ lineHeight: '1.625' }}>
-                HRVenus is committed to complying with Malaysia's Personal Data Protection Act 2010 (Act 709). We respect the privacy of all HR users and employees whose personal information is processed through the HRVenus platform. This Privacy Policy explains how data is collected, used, stored, and protected as part of HR task management, employee workflows, and administrative functions.
+                TickReady is committed to complying with Malaysia's Personal Data Protection Act 2010 (Act 709). We respect the privacy of all HR users and employees whose personal information is processed through the TickReady platform. This Privacy Policy explains how data is collected, used, stored, and protected as part of HR task management, employee workflows, and administrative functions.
               </p>
             </section>
 
@@ -99,7 +99,7 @@ export function PDPAModal({ isOpen, onClose }: { isOpen: boolean; onClose: () =>
                 1. Personal Data Collection
               </h3>
               <p style={{ lineHeight: '1.625', marginBottom: '0.5rem' }}>
-                The HRVenus system may collect and process the following data:
+                The TickReady system may collect and process the following data:
               </p>
               <ul style={{ paddingLeft: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
                 <li>HR admin and user details (name, email, role)</li>
@@ -147,7 +147,7 @@ export function PDPAModal({ isOpen, onClose }: { isOpen: boolean; onClose: () =>
                 3. Rights Under Malaysia PDPA
               </h3>
               <p style={{ lineHeight: '1.625', marginBottom: '0.5rem' }}>
-                Individuals whose data is processed through HRVenus have the right to:
+                Individuals whose data is processed through TickReady have the right to:
               </p>
               <ul style={{ paddingLeft: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
                 <li><strong>Access</strong> — Request access to their personal data</li>
@@ -172,7 +172,7 @@ export function PDPAModal({ isOpen, onClose }: { isOpen: boolean; onClose: () =>
                 4. Data Security & Retention
               </h3>
               <p style={{ lineHeight: '1.625', marginBottom: '0.5rem' }}>
-                HRVenus applies strict security practices including:
+                TickReady applies strict security practices including:
               </p>
               <ul style={{ paddingLeft: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.25rem', marginBottom: '0.75rem' }}>
                 <li>Encrypted data storage and secure transmission</li>
@@ -195,7 +195,7 @@ export function PDPAModal({ isOpen, onClose }: { isOpen: boolean; onClose: () =>
                 5. Employee Data Processing
               </h3>
               <p style={{ lineHeight: '1.625', marginBottom: '0.5rem' }}>
-                HRVenus functions as a platform enabling organizations to manage HR operations. The organization using HRVenus remains the primary data controller. HRVenus ensures:
+                TickReady functions as a platform enabling organizations to manage HR operations. The organization using TickReady remains the primary data controller. TickReady ensures:
               </p>
               <ul style={{ paddingLeft: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
                 <li>No employee data is sold to third parties</li>
@@ -216,7 +216,7 @@ export function PDPAModal({ isOpen, onClose }: { isOpen: boolean; onClose: () =>
                 6. Data Sharing & Disclosure
               </h3>
               <p style={{ lineHeight: '1.625', marginBottom: '0.5rem' }}>
-                HRVenus does not share data for advertising or external marketing. Data may only be disclosed to:
+                TickReady does not share data for advertising or external marketing. Data may only be disclosed to:
               </p>
               <ul style={{ paddingLeft: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
                 <li>Authorized HR personnel within your organization</li>
@@ -236,7 +236,7 @@ export function PDPAModal({ isOpen, onClose }: { isOpen: boolean; onClose: () =>
                 7. Contact for PDPA Requests
               </h3>
               <p style={{ lineHeight: '1.625' }}>
-                For PDPA inquiries, data access, corrections, or privacy concerns, users may contact your organization's Data Protection Officer (DPO) or the HRVenus support team.
+                For PDPA inquiries, data access, corrections, or privacy concerns, users may contact your organization's Data Protection Officer (DPO) or the TickReady support team.
               </p>
             </section>
 
@@ -251,7 +251,7 @@ export function PDPAModal({ isOpen, onClose }: { isOpen: boolean; onClose: () =>
                 8. Updates to This Policy
               </h3>
               <p style={{ lineHeight: '1.625' }}>
-                HRVenus may update this Privacy Policy periodically due to new features, legal requirements, or improvements in data practices. Significant changes will be communicated through the platform.
+                TickReady may update this Privacy Policy periodically due to new features, legal requirements, or improvements in data practices. Significant changes will be communicated through the platform.
               </p>
             </section>
 
@@ -271,7 +271,7 @@ export function PDPAModal({ isOpen, onClose }: { isOpen: boolean; onClose: () =>
                 Your Data Protection Rights
               </h3>
               <p style={{ lineHeight: '1.625', color: '#166534', marginBottom: '0.5rem' }}>
-                You have control over your HRVenus data:
+                You have control over your TickReady data:
               </p>
               <ul style={{
                 paddingLeft: '1.5rem',

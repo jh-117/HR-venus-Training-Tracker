@@ -125,7 +125,7 @@ export function Dashboard({
             <Folder className="h-5 w-5" />
           </div>
           <div>
-            <h1 className="text-lg font-bold leading-none">HR Venus</h1>
+            <h1 className="text-lg font-bold leading-none">TickReady</h1>
             <p className="text-xs text-slate-400">Training Action Tracker</p>
           </div>
         </div>

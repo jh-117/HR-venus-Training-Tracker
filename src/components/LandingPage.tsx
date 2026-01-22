@@ -70,7 +70,7 @@ export function LandingPage({ onGetStarted, onPrivacyPolicyClick }: LandingPageP
                 fontWeight: '700'
               }}
             >
-              HR<span style={{ color: '#94a3b8' }}>Venus</span>
+              Tick<span style={{ color: '#94a3b8' }}>Ready</span>
             </span>
           </div>
 
@@ -265,7 +265,7 @@ export function LandingPage({ onGetStarted, onPrivacyPolicyClick }: LandingPageP
               lineHeight: '1.75'
             }}
           >
-            Teams trust HRVenus to run structured, accountable training preparation.
+            Teams trust TickReady to run structured, accountable training preparation.
           </p>
           <Button
             size="lg"
