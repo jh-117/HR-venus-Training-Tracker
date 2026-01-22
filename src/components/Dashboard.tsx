@@ -9,6 +9,7 @@ import {
   Archive,
   Trash2,
   MoreVertical,
+  LogOut,
 } from "lucide-react";
 import {
   Activity,
@@ -32,6 +33,7 @@ import {
   DropdownMenuTrigger,
   DropdownMenuSeparator,
 } from './ui/dropdown-menu';
+import { useAuth } from '../contexts/AuthContext';
 
 interface DashboardProps {
   activities: Activity[];
@@ -93,6 +95,7 @@ export function Dashboard({
   const [isChoiceDialogOpen, setIsChoiceDialogOpen] = useState(false);
   const [showArchived, setShowArchived] = useState(false);
   const critical = getMostCriticalTask(activities);
+  const { signOut } = useAuth();
 
   const handleCreateChoice = (mode: "template" | "scratch") => {
     setIsChoiceDialogOpen(false);
@@ -126,6 +129,16 @@ export function Dashboard({
             <p className="text-xs text-slate-400">Training Action Tracker</p>
           </div>
         </div>
+
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={signOut}
+          className="text-slate-400 hover:text-white"
+        >
+          <LogOut className="h-4 w-4 mr-2" />
+          Sign Out
+        </Button>
       </header>
 
       <main className="container mx-auto max-w-5xl p-8 space-y-10">
