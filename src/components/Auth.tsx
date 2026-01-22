@@ -75,17 +75,20 @@ export function Auth() {
     setLoading(false)
   }
 
-  // --- STYLES ---
+  // --- REFINED STYLES ---
   const styles = {
+    // Width: 400px (Sweet spot between narrow mobile and desktop)
     card: {
       width: '400px',
       borderRadius: '40px',
     },
+    // Inputs: Fully rounded
     pillInput: {
       borderRadius: '9999px',
     },
+    // Title: Big but balanced
     mainTitle: {
-      fontSize: '4.5rem', 
+      fontSize: '4rem', 
       lineHeight: '1',
       fontWeight: '900',
     }
@@ -93,23 +96,23 @@ export function Auth() {
 
   return (
     <>
-      <div className="min-h-screen bg-slate-950 flex items-center justify-center p-6">
+      <div className="min-h-screen bg-slate-950 flex items-center justify-center p-4">
         <BackgroundMusic src={themeMusic} />
 
         <div className="flex flex-col items-center justify-center w-full">
           
           {/* ================= HEADER ================= */}
-          {/* Increased bottom margin from mb-8 to mb-14 for breathing room */}
-          <div className="text-center mb-14 flex flex-col items-center">
-            
+          <div className="text-center mb-8 flex flex-col items-center">
+            {/* ICON - Increased size significantly to match title */}
             <div 
-              className="flex h-28 w-28 items-center justify-center bg-blue-600/20 text-blue-500 shadow-xl shadow-blue-500/10 mb-8"
+              className="flex h-28 w-28 items-center justify-center bg-blue-600/20 text-blue-500 shadow-xl shadow-blue-500/10 mb-6"
               style={{ borderRadius: '35px' }}
             >
               <Folder className="h-14 w-14" />
             </div>
 
-            <h1 className="text-white mb-4 drop-shadow-2xl tracking-tighter" style={styles.mainTitle}>
+            {/* TITLE - Huge but tight */}
+            <h1 className="text-white mb-2 drop-shadow-2xl tracking-tighter" style={styles.mainTitle}>
               Tick<span className="text-blue-500">Ready</span>
             </h1>
 
@@ -123,18 +126,17 @@ export function Auth() {
             className="bg-slate-900 border border-slate-800 p-10 shadow-2xl relative overflow-hidden flex flex-col"
             style={styles.card}
           >
-            {/* Background Glow */}
+            {/* Subtle Glow Effect */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-32 bg-blue-500/10 blur-[80px] pointer-events-none"></div>
 
-            <h2 className="text-3xl font-bold text-white mb-10 text-center relative z-10">
+            <h2 className="text-3xl font-bold text-white mb-8 text-center relative z-10">
               {isSignUp ? 'Create Account' : 'Welcome Back'}
             </h2>
 
-            {/* INCREASED SPACING: space-y-9 (36px gap between inputs) */}
-            <form onSubmit={handleSubmit} className="space-y-9 relative z-10">
+            <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
               {/* Email */}
-              <div className="space-y-3">
-                <Label className="text-sm font-bold text-slate-300 ml-5 block">
+              <div className="space-y-2">
+                <Label className="text-sm font-bold text-slate-300 ml-4">
                   Email Address
                 </Label>
                 <Input
@@ -144,13 +146,14 @@ export function Auth() {
                   placeholder="you@example.com"
                   required
                   style={styles.pillInput}
-                  className="bg-slate-950 border-slate-700 text-slate-100 h-14 px-7 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                  // Added lighter border for visibility
+                  className="bg-slate-950 border-slate-700 text-slate-100 h-14 px-6 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
                 />
               </div>
 
               {/* Password */}
-              <div className="space-y-3">
-                <div className="flex justify-between items-center ml-5 mr-3">
+              <div className="space-y-2">
+                <div className="flex justify-between items-center ml-4 mr-2">
                   <Label className="text-sm font-bold text-slate-300">
                     Password
                   </Label>
@@ -173,12 +176,13 @@ export function Auth() {
                     placeholder="••••••••"
                     required
                     style={styles.pillInput}
-                    className="bg-slate-950 border-slate-700 text-slate-100 h-14 px-7 pr-12 transition-all"
+                     // Added lighter border for visibility
+                    className="bg-slate-950 border-slate-700 text-slate-100 h-14 px-6 pr-12 transition-all"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-6 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300 transition-colors"
+                    className="absolute right-5 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300 transition-colors"
                   >
                     {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                   </button>
@@ -187,29 +191,29 @@ export function Auth() {
 
               {/* Signup Extras */}
               {isSignUp && (
-                <div className="space-y-6 animate-in fade-in slide-in-from-top-2">
-                  <div className="space-y-3">
-                    <Label className="text-sm font-bold text-slate-300 ml-5 block">Security Question</Label>
+                <div className="space-y-4 animate-in fade-in slide-in-from-top-2">
+                  <div className="space-y-2">
+                    <Label className="text-sm font-bold text-slate-300 ml-4">Security Question</Label>
                     <Input
                       value={securityQuestion}
                       onChange={(e) => setSecurityQuestion(e.target.value)}
                       placeholder="e.g. First pet's name"
                       style={styles.pillInput}
-                      className="bg-slate-950 border-slate-700 text-slate-100 h-14 px-7"
+                      className="bg-slate-950 border-slate-700 text-slate-100 h-14 px-6"
                     />
                   </div>
-                  <div className="space-y-3">
-                    <Label className="text-sm font-bold text-slate-300 ml-5 block">Answer</Label>
+                  <div className="space-y-2">
+                    <Label className="text-sm font-bold text-slate-300 ml-4">Answer</Label>
                     <Input
                       value={securityAnswer}
                       onChange={(e) => setSecurityAnswer(e.target.value)}
                       placeholder="Security answer"
                       style={styles.pillInput}
-                      className="bg-slate-950 border-slate-700 text-slate-100 h-14 px-7"
+                      className="bg-slate-950 border-slate-700 text-slate-100 h-14 px-6"
                     />
                   </div>
 
-                  <label className="flex items-center gap-3 text-xs text-slate-400 px-5">
+                  <label className="flex items-center gap-3 text-xs text-slate-400 px-4">
                     <input
                       type="checkbox"
                       checked={pdpaConsent}
@@ -254,7 +258,7 @@ export function Auth() {
               </Button>
             </form>
 
-            <div className="mt-10 text-center">
+            <div className="mt-8 text-center">
               <button
                 onClick={() => {
                   setIsSignUp(!isSignUp)
@@ -271,12 +275,12 @@ export function Auth() {
           </div>
 
           {/* ================= FOOTER ================= */}
-          {/* Increased top margin to mt-16 */}
-          <div className="mt-16 flex flex-col items-center opacity-70 hover:opacity-100 transition-opacity">
-            <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-slate-500 mb-4">
+          <div className="mt-12 flex flex-col items-center opacity-70 hover:opacity-100 transition-opacity">
+            <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-slate-500 mb-3">
               Powered by
             </p>
-            <div className="bg-white/5 rounded-xl px-5 py-3 backdrop-blur-sm border border-white/10">
+            {/* Added a container to blend the white logo better */}
+            <div className="bg-white/5 rounded-xl px-4 py-2 backdrop-blur-sm border border-white/5">
                 <img src={kadoshLogo} className="h-6 opacity-90" alt="Kadosh AI" />
             </div>
           </div>
