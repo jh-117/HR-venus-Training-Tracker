@@ -74,19 +74,6 @@ export function LandingPage({ onGetStarted, onPrivacyPolicyClick }: LandingPageP
             </span>
           </div>
 
-          <Button
-            variant="outline"
-            onClick={onGetStarted}
-            style={{
-              borderColor: '#334155',
-              color: '#0f1210',
-              borderRadius: '0.75rem',
-              paddingLeft: '1.5rem',
-              paddingRight: '1.5rem'
-            }}
-          >
-            Sign In
-          </Button>
         </nav>
 
         {/* HERO */}
