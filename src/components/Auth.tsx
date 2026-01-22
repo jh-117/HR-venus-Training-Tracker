@@ -100,7 +100,7 @@ export function Auth() {
         <div className="flex flex-col items-center justify-center w-full">
           
           {/* ================= HEADER ================= */}
-          <div className="text-center mb-10 flex flex-col items-center">
+          <div className="text-center mb-20 flex flex-col items-center">
             <div 
               className="flex h-28 w-28 items-center justify-center bg-blue-600/20 text-blue-500 shadow-xl shadow-blue-500/10 mb-6"
               style={{ borderRadius: '35px' }}
