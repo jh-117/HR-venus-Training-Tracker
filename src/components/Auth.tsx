@@ -75,7 +75,7 @@ export function Auth() {
     setLoading(false)
   }
 
-  // Common style to force pill shape regardless of component defaults
+  // FORCE PILL SHAPE
   const pillStyle = { borderRadius: '9999px' };
 
   return (
@@ -83,22 +83,22 @@ export function Auth() {
       <div className="min-h-screen bg-slate-950 flex items-center justify-center p-4">
         <BackgroundMusic src={themeMusic} />
 
-        {/* REDUCED WIDTH: max-w-[400px] makes it much narrower and cleaner */}
-        <div className="w-full max-w-[400px] flex flex-col items-center">
+        {/* DRASTIC WIDTH REDUCTION: max-w-[340px] */}
+        <div className="w-full max-w-[340px] flex flex-col items-center">
           
           {/* ================= HEADER ================= */}
           <div className="text-center mb-10 w-full">
             <div className="flex justify-center mb-6">
               <div 
-                className="flex h-20 w-20 items-center justify-center bg-blue-600/20 text-blue-500 shadow-xl shadow-blue-500/10"
-                style={{ borderRadius: '24px' }} // Manual rounding
+                className="flex h-24 w-24 items-center justify-center bg-blue-600/20 text-blue-500 shadow-xl shadow-blue-500/10"
+                style={{ borderRadius: '30px' }}
               >
-                <Folder className="h-10 w-10" />
+                <Folder className="h-12 w-12" />
               </div>
             </div>
 
-            {/* BIGGER TITLE: Scaled up and tighter tracking */}
-            <h1 className="text-7xl font-black tracking-tighter text-white mb-3 drop-shadow-2xl">
+            {/* MASSIVE TITLE: text-8xl */}
+            <h1 className="text-8xl font-black tracking-tighter text-white mb-2 drop-shadow-2xl leading-none">
               Tick<span className="text-blue-500">Ready</span>
             </h1>
 
@@ -108,22 +108,22 @@ export function Auth() {
           </div>
 
           {/* ================= CARD ================= */}
-          {/* ROUND CARD: Manual style for card radius + narrower width */}
           <div 
             className="w-full bg-slate-900 border border-slate-800 p-8 shadow-2xl relative overflow-hidden"
             style={{ borderRadius: '40px' }}
           >
-            {/* Background Glow Effect */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-20 bg-blue-500/10 blur-[50px] pointer-events-none"></div>
+            {/* Background Glow */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-24 bg-blue-500/10 blur-[60px] pointer-events-none"></div>
 
-            <h2 className="text-3xl font-bold text-white mb-8 text-center relative z-10">
+            {/* BIGGER FORM HEADER: text-4xl */}
+            <h2 className="text-4xl font-black text-white mb-8 text-center relative z-10 leading-tight">
               {isSignUp ? 'Create Account' : 'Welcome Back'}
             </h2>
 
             <form onSubmit={handleSubmit} className="space-y-5 relative z-10">
               {/* Email */}
               <div className="space-y-2">
-                <Label className="text-sm font-medium text-slate-300 ml-4">
+                <Label className="text-sm font-bold text-slate-300 ml-4">
                   Email Address
                 </Label>
                 <Input
@@ -132,22 +132,22 @@ export function Auth() {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="you@example.com"
                   required
-                  style={pillStyle} // FORCED ROUNDNESS
-                  className="bg-slate-950 border-slate-800 text-slate-100 h-14 px-6 focus:ring-2 focus:ring-blue-500 transition-all"
+                  style={pillStyle}
+                  className="bg-slate-950 border-slate-800 text-slate-100 h-14 px-6 focus:ring-2 focus:ring-blue-500 transition-all font-medium"
                 />
               </div>
 
               {/* Password */}
               <div className="space-y-2">
                 <div className="flex justify-between items-center ml-4 mr-2">
-                  <Label className="text-sm font-medium text-slate-300">
+                  <Label className="text-sm font-bold text-slate-300">
                     Password
                   </Label>
                   {!isSignUp && (
                     <button
                       type="button"
                       onClick={() => setShowPasswordResetModal(true)}
-                      className="text-xs text-blue-400 hover:text-blue-300 transition-colors"
+                      className="text-xs font-bold text-blue-400 hover:text-blue-300 transition-colors"
                     >
                       Forgot?
                     </button>
@@ -161,8 +161,8 @@ export function Auth() {
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="••••••••"
                     required
-                    style={pillStyle} // FORCED ROUNDNESS
-                    className="bg-slate-950 border-slate-800 text-slate-100 h-14 px-6 pr-12 transition-all"
+                    style={pillStyle}
+                    className="bg-slate-950 border-slate-800 text-slate-100 h-14 px-6 pr-12 transition-all font-medium"
                   />
                   <button
                     type="button"
@@ -178,23 +178,23 @@ export function Auth() {
               {isSignUp && (
                 <div className="space-y-4 animate-in fade-in slide-in-from-top-2">
                   <div className="space-y-2">
-                    <Label className="text-sm font-medium text-slate-300 ml-4">Security Question</Label>
+                    <Label className="text-sm font-bold text-slate-300 ml-4">Security Question</Label>
                     <Input
                       value={securityQuestion}
                       onChange={(e) => setSecurityQuestion(e.target.value)}
                       placeholder="e.g. First pet's name"
-                      style={pillStyle} // FORCED ROUNDNESS
-                      className="bg-slate-950 border-slate-800 text-slate-100 h-14 px-6"
+                      style={pillStyle}
+                      className="bg-slate-950 border-slate-800 text-slate-100 h-14 px-6 font-medium"
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label className="text-sm font-medium text-slate-300 ml-4">Answer</Label>
+                    <Label className="text-sm font-bold text-slate-300 ml-4">Answer</Label>
                     <Input
                       value={securityAnswer}
                       onChange={(e) => setSecurityAnswer(e.target.value)}
                       placeholder="Security answer"
-                      style={pillStyle} // FORCED ROUNDNESS
-                      className="bg-slate-950 border-slate-800 text-slate-100 h-14 px-6"
+                      style={pillStyle}
+                      className="bg-slate-950 border-slate-800 text-slate-100 h-14 px-6 font-medium"
                     />
                   </div>
 
@@ -210,7 +210,7 @@ export function Auth() {
                       <button
                         type="button"
                         onClick={() => setShowPDPAModal(true)}
-                        className="text-blue-400 hover:underline"
+                        className="text-blue-400 hover:underline font-bold"
                       >
                         Privacy Policy
                       </button>
@@ -220,7 +220,7 @@ export function Auth() {
               )}
 
               {(error || message) && (
-                <div className={`p-4 text-center text-sm font-medium ${
+                <div className={`p-4 text-center text-sm font-bold ${
                   error
                     ? 'bg-red-500/10 text-red-400 border border-red-500/20'
                     : 'bg-green-500/10 text-green-400 border border-green-500/20'
@@ -232,8 +232,8 @@ export function Auth() {
               <Button
                 type="submit"
                 disabled={loading}
-                style={pillStyle} // FORCED ROUNDNESS
-                className="w-full h-14 text-lg font-bold bg-blue-600 hover:bg-blue-500 shadow-lg shadow-blue-900/20 hover:shadow-blue-600/20 transition-all duration-300"
+                style={pillStyle}
+                className="w-full h-14 text-xl font-black bg-blue-600 hover:bg-blue-500 shadow-lg shadow-blue-900/20 hover:shadow-blue-600/20 transition-all duration-300"
               >
                 {loading
                   ? 'Processing...'
@@ -250,7 +250,7 @@ export function Auth() {
                   setError('')
                   setMessage('')
                 }}
-                className="text-sm font-medium text-slate-400 hover:text-white transition-colors"
+                className="text-sm font-semibold text-slate-400 hover:text-white transition-colors"
               >
                 {isSignUp
                   ? 'Already have an account? Sign in'
