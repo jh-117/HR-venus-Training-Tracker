@@ -121,7 +121,7 @@ export function Auth() {
           <div 
             // FIX: Uses p-12 (48px) for large gap between edge and words, 
             // but because width is 480px, the inputs stay wide.
-            className="bg-slate-900 border border-slate-800 p-12 shadow-2xl relative overflow-hidden flex flex-col"
+            className="bg-slate-900 border border-slate-800 p-14 shadow-2xl relative overflow-hidden flex flex-col"
             style={styles.card}
           >
             {/* Subtle Glow Effect */}
