@@ -129,7 +129,28 @@ export function LandingPage({ onGetStarted, onPrivacyPolicyClick }: LandingPageP
             Streamline training preparation with structured tasks, visibility, and real-time progress.
           </p>
 
-          
+          <Button
+            size="lg"
+            onClick={onGetStarted}
+            style={{
+              background: 'linear-gradient(to right, #3b82f6, #6366f1)',
+              color: '#ffffff',
+              boxShadow: '0 20px 25px -5px rgba(59, 130, 246, 0.3)',
+              fontSize: '1.125rem',
+              fontWeight: '600',
+              paddingLeft: '3rem',
+              paddingRight: '3rem',
+              paddingTop: '1.75rem',
+              paddingBottom: '1.75rem',
+              borderRadius: '0.75rem',
+              display: 'inline-flex',
+              alignItems: 'center',
+              transition: 'all 0.15s'
+            }}
+          >
+            Get Started
+            <ArrowRight style={{ marginLeft: '0.75rem', height: '1.25rem', width: '1.25rem' }} />
+          </Button>
         </section>
 
         {/* FEATURES */}
@@ -213,58 +234,7 @@ export function LandingPage({ onGetStarted, onPrivacyPolicyClick }: LandingPageP
           ))}
         </section>
 
-        {/* CTA */}
-        <section
-          style={{
-            borderRadius: '1.5rem',
-            padding: '3rem 2rem',
-            textAlign: 'center',
-            marginBottom: '7rem',
-            background: 'linear-gradient(to right, rgba(59, 130, 246, 0.1), rgba(99, 102, 241, 0.1))',
-            border: '1px solid rgba(59, 130, 246, 0.2)'
-          }}
-        >
-          <h2
-            style={{
-              color: '#f1f5f9',
-              fontSize: 'clamp(1.875rem, 4vw, 2.25rem)',
-              lineHeight: '1.2',
-              fontWeight: '700',
-              marginBottom: '1.5rem'
-            }}
-          >
-            Ready to optimize your training workflow?
-          </h2>
-          <p
-            style={{
-              maxWidth: '42rem',
-              margin: '0 auto 2.5rem',
-              color: '#94a3b8',
-              fontSize: '1.125rem',
-              lineHeight: '1.75'
-            }}
-          >
-            Teams trust TickReady to run structured, accountable training preparation.
-          </p>
-          <Button
-            size="lg"
-            onClick={onGetStarted}
-            style={{
-              background: 'linear-gradient(to right, #3b82f6, #6366f1)',
-              color: '#ffffff',
-              boxShadow: '0 10px 15px -3px rgba(59, 130, 246, 0.3)',
-              fontSize: '1.125rem',
-              fontWeight: '600',
-              paddingLeft: '3rem',
-              paddingRight: '3rem',
-              paddingTop: '1.75rem',
-              paddingBottom: '1.75rem',
-              borderRadius: '0.75rem'
-            }}
-          >
-            Create Your Account
-          </Button>
-        </section>
+        
       </div>
 
       {/* FOOTER - Updated to match correct example structure */}
