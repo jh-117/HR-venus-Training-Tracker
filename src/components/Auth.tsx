@@ -75,44 +75,55 @@ export function Auth() {
     setLoading(false)
   }
 
+  // Common style to force pill shape regardless of component defaults
+  const pillStyle = { borderRadius: '9999px' };
+
   return (
     <>
       <div className="min-h-screen bg-slate-950 flex items-center justify-center p-4">
         <BackgroundMusic src={themeMusic} />
 
-        <div className="w-full max-w-[500px]">
+        {/* REDUCED WIDTH: max-w-[400px] makes it much narrower and cleaner */}
+        <div className="w-full max-w-[400px] flex flex-col items-center">
           
           {/* ================= HEADER ================= */}
-          <div className="text-center mb-10">
+          <div className="text-center mb-10 w-full">
             <div className="flex justify-center mb-6">
-              <div className="flex h-24 w-24 items-center justify-center rounded-[2rem] bg-blue-600/20 text-blue-500 shadow-xl shadow-blue-500/10">
-                <Folder className="h-12 w-12" />
+              <div 
+                className="flex h-20 w-20 items-center justify-center bg-blue-600/20 text-blue-500 shadow-xl shadow-blue-500/10"
+                style={{ borderRadius: '24px' }} // Manual rounding
+              >
+                <Folder className="h-10 w-10" />
               </div>
             </div>
 
-            {/* MASSIVE TITLE */}
-            <h1 className="text-8xl md:text-9xl font-black tracking-tighter text-white mb-4 drop-shadow-2xl">
+            {/* BIGGER TITLE: Scaled up and tighter tracking */}
+            <h1 className="text-7xl font-black tracking-tighter text-white mb-3 drop-shadow-2xl">
               Tick<span className="text-blue-500">Ready</span>
             </h1>
 
-            <p className="text-2xl font-medium text-slate-400 tracking-wider">
+            <p className="text-lg font-medium text-slate-400 tracking-wider">
               Pre Training Action Tracker
             </p>
           </div>
 
           {/* ================= CARD ================= */}
-          {/* FORCED ROUNDNESS: rounded-[50px] */}
-          <div className="bg-slate-900 border border-slate-800 rounded-[50px] p-10 md:p-12 shadow-2xl">
-            
-            {/* BIGGER HEADER */}
-            <h2 className="text-4xl font-bold text-white mb-10 text-center">
+          {/* ROUND CARD: Manual style for card radius + narrower width */}
+          <div 
+            className="w-full bg-slate-900 border border-slate-800 p-8 shadow-2xl relative overflow-hidden"
+            style={{ borderRadius: '40px' }}
+          >
+            {/* Background Glow Effect */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-20 bg-blue-500/10 blur-[50px] pointer-events-none"></div>
+
+            <h2 className="text-3xl font-bold text-white mb-8 text-center relative z-10">
               {isSignUp ? 'Create Account' : 'Welcome Back'}
             </h2>
 
-            <form onSubmit={handleSubmit} className="space-y-7">
+            <form onSubmit={handleSubmit} className="space-y-5 relative z-10">
               {/* Email */}
-              <div className="space-y-3">
-                <Label className="text-base font-medium text-slate-300 ml-4">
+              <div className="space-y-2">
+                <Label className="text-sm font-medium text-slate-300 ml-4">
                   Email Address
                 </Label>
                 <Input
@@ -121,22 +132,22 @@ export function Auth() {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="you@example.com"
                   required
-                  // FORCED ROUNDNESS using !rounded-full
-                  className="!rounded-full bg-slate-950 border-slate-800 text-slate-100 h-16 px-8 text-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                  style={pillStyle} // FORCED ROUNDNESS
+                  className="bg-slate-950 border-slate-800 text-slate-100 h-14 px-6 focus:ring-2 focus:ring-blue-500 transition-all"
                 />
               </div>
 
               {/* Password */}
-              <div className="space-y-3">
+              <div className="space-y-2">
                 <div className="flex justify-between items-center ml-4 mr-2">
-                  <Label className="text-base font-medium text-slate-300">
+                  <Label className="text-sm font-medium text-slate-300">
                     Password
                   </Label>
                   {!isSignUp && (
                     <button
                       type="button"
                       onClick={() => setShowPasswordResetModal(true)}
-                      className="text-sm text-blue-400 hover:text-blue-300 transition-colors"
+                      className="text-xs text-blue-400 hover:text-blue-300 transition-colors"
                     >
                       Forgot?
                     </button>
@@ -150,42 +161,44 @@ export function Auth() {
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="••••••••"
                     required
-                    // FORCED ROUNDNESS using !rounded-full
-                    className="!rounded-full bg-slate-950 border-slate-800 text-slate-100 h-16 px-8 pr-14 text-lg transition-all"
+                    style={pillStyle} // FORCED ROUNDNESS
+                    className="bg-slate-950 border-slate-800 text-slate-100 h-14 px-6 pr-12 transition-all"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-6 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300 transition-colors"
+                    className="absolute right-5 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300 transition-colors"
                   >
-                    {showPassword ? <EyeOff className="h-6 w-6" /> : <Eye className="h-6 w-6" />}
+                    {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                   </button>
                 </div>
               </div>
 
               {/* Signup Extras */}
               {isSignUp && (
-                <div className="space-y-5 animate-in fade-in slide-in-from-top-2">
-                  <div className="space-y-3">
-                    <Label className="text-base font-medium text-slate-300 ml-4">Security Question</Label>
+                <div className="space-y-4 animate-in fade-in slide-in-from-top-2">
+                  <div className="space-y-2">
+                    <Label className="text-sm font-medium text-slate-300 ml-4">Security Question</Label>
                     <Input
                       value={securityQuestion}
                       onChange={(e) => setSecurityQuestion(e.target.value)}
                       placeholder="e.g. First pet's name"
-                      className="!rounded-full bg-slate-950 border-slate-800 text-slate-100 h-16 px-8 text-lg"
+                      style={pillStyle} // FORCED ROUNDNESS
+                      className="bg-slate-950 border-slate-800 text-slate-100 h-14 px-6"
                     />
                   </div>
-                  <div className="space-y-3">
-                    <Label className="text-base font-medium text-slate-300 ml-4">Answer</Label>
+                  <div className="space-y-2">
+                    <Label className="text-sm font-medium text-slate-300 ml-4">Answer</Label>
                     <Input
                       value={securityAnswer}
                       onChange={(e) => setSecurityAnswer(e.target.value)}
                       placeholder="Security answer"
-                      className="!rounded-full bg-slate-950 border-slate-800 text-slate-100 h-16 px-8 text-lg"
+                      style={pillStyle} // FORCED ROUNDNESS
+                      className="bg-slate-950 border-slate-800 text-slate-100 h-14 px-6"
                     />
                   </div>
 
-                  <label className="flex items-center gap-3 text-sm text-slate-400 px-4">
+                  <label className="flex items-center gap-3 text-xs text-slate-400 px-4">
                     <input
                       type="checkbox"
                       checked={pdpaConsent}
@@ -197,7 +210,7 @@ export function Auth() {
                       <button
                         type="button"
                         onClick={() => setShowPDPAModal(true)}
-                        className="text-blue-400 hover:underline font-semibold"
+                        className="text-blue-400 hover:underline"
                       >
                         Privacy Policy
                       </button>
@@ -207,11 +220,11 @@ export function Auth() {
               )}
 
               {(error || message) && (
-                <div className={`p-5 rounded-[2rem] text-base font-medium text-center ${
+                <div className={`p-4 text-center text-sm font-medium ${
                   error
                     ? 'bg-red-500/10 text-red-400 border border-red-500/20'
                     : 'bg-green-500/10 text-green-400 border border-green-500/20'
-                }`}>
+                }`} style={{ borderRadius: '20px' }}>
                   {error || message}
                 </div>
               )}
@@ -219,8 +232,8 @@ export function Auth() {
               <Button
                 type="submit"
                 disabled={loading}
-                // FORCED ROUNDNESS using !rounded-full
-                className="!rounded-full w-full h-16 text-xl font-bold bg-blue-600 hover:bg-blue-500 shadow-xl shadow-blue-900/20 hover:shadow-blue-600/20 transition-all duration-300"
+                style={pillStyle} // FORCED ROUNDNESS
+                className="w-full h-14 text-lg font-bold bg-blue-600 hover:bg-blue-500 shadow-lg shadow-blue-900/20 hover:shadow-blue-600/20 transition-all duration-300"
               >
                 {loading
                   ? 'Processing...'
@@ -230,14 +243,14 @@ export function Auth() {
               </Button>
             </form>
 
-            <div className="mt-10 text-center">
+            <div className="mt-8 text-center">
               <button
                 onClick={() => {
                   setIsSignUp(!isSignUp)
                   setError('')
                   setMessage('')
                 }}
-                className="text-base font-medium text-slate-400 hover:text-white transition-colors"
+                className="text-sm font-medium text-slate-400 hover:text-white transition-colors"
               >
                 {isSignUp
                   ? 'Already have an account? Sign in'
@@ -247,11 +260,11 @@ export function Auth() {
           </div>
 
           {/* ================= FOOTER ================= */}
-          <div className="mt-16 flex flex-col items-center opacity-60 hover:opacity-100 transition-opacity">
-            <p className="text-xs font-bold uppercase tracking-[0.3em] text-slate-500 mb-4">
+          <div className="mt-10 flex flex-col items-center opacity-60 hover:opacity-100 transition-opacity">
+            <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-slate-500 mb-2">
               Powered by
             </p>
-            <img src={kadoshLogo} className="h-10 grayscale hover:grayscale-0 transition-all duration-500" alt="Kadosh AI" />
+            <img src={kadoshLogo} className="h-8 grayscale hover:grayscale-0 transition-all duration-500" alt="Kadosh AI" />
           </div>
         </div>
       </div>
