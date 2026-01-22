@@ -78,32 +78,31 @@ export function Auth() {
 
   return (
     <>
-      <div className="min-h-screen bg-slate-950 flex flex-col">
+      <div className="min-h-screen bg-slate-950 flex items-center justify-center p-4">
         <BackgroundMusic src={themeMusic} />
-        <div className="flex-1 flex items-center justify-center p-4">
-          <div className="w-full max-w-md">
-            {/* Header */}
-            <div className="text-center mb-6">
-              <div className="flex justify-center mb-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600/20 text-blue-500">
-                  <Folder className="h-11 w-11" />
-                </div>
+        <div className="w-full max-w-md">
+          {/* Header */}
+          <div className="text-center mb-6">
+            <div className="flex justify-center mb-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600/20 text-blue-500">
+                <Folder className="h-11 w-11" />
               </div>
-
-              <h1
-                className="font-black tracking-tight text-slate-100 mb-2"
-                style={{ fontSize: 'clamp(2rem, 6vw, 4rem)' }}
-              >
-                Tick<span className="text-slate-300">Ready</span>
-              </h1>
-
-              <p className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-400">
-                Pre Training Action Tracker
-              </p>
             </div>
 
-            {/* Auth Form */}
-            <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl">
+            <h1
+              className="font-black tracking-tight text-slate-100 mb-2"
+              style={{ fontSize: 'clamp(2rem, 6vw, 3rem)' }}
+            >
+              Tick<span className="text-slate-300">Ready</span>
+            </h1>
+
+            <p className="text-lg sm:text-xl font-bold text-slate-400">
+              Pre Training Action Tracker
+            </p>
+          </div>
+
+          {/* Auth Form */}
+          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl">
               <h2 className="text-xl font-bold text-slate-100 mb-4">
                 {isSignUp ? 'Create Account' : 'Welcome Back'}
               </h2>
@@ -257,19 +256,18 @@ export function Auth() {
                 </button>
               </div>
             </div>
+
+            {/* Powered by section */}
+            <div className="mt-8 text-center">
+              <p className="text-sm text-slate-400 mb-3">Powered by</p>
+              <img
+                src={kadoshLogo}
+                alt="Kadosh AI"
+                className="mx-auto h-8"
+              />
+            </div>
           </div>
         </div>
-
-        {/* Powered by section at the bottom */}
-        <div className="py-6 border-t border-slate-800 text-center bg-slate-950">
-          <p className="text-sm text-slate-400 mb-3">Powered by</p>
-          <img
-            src={kadoshLogo}
-            alt="Kadosh AI"
-            className="mx-auto h-8"
-          />
-        </div>
-      </div>
 
       {/* PDPA Modal */}
       <PDPAModal isOpen={showPDPAModal} onClose={() => setShowPDPAModal(false)} />
