@@ -94,15 +94,13 @@ export function Auth() {
 
   return (
     <>
-      {/* UPDATED CONTAINER: 
-        - py-12: Adds vertical breathing room at the very top and bottom of the page.
-      */}
+      {/* Page Container */}
       <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-center py-12 px-4">
         <BackgroundMusic src={themeMusic} />
 
         {/* ================= HEADER ================= */}
-        {/* mb-16: Balanced spacing (64px) between Header and Card */}
-        <div className="text-center mb-16 flex flex-col items-center">
+        {/* INCREASED SPACING: Changed to mb-24 (96px gap) */}
+        <div className="text-center mb-24 flex flex-col items-center">
           <div 
             className="flex h-28 w-28 items-center justify-center bg-blue-600/20 text-blue-500 shadow-xl shadow-blue-500/10 mb-6"
             style={{ borderRadius: '35px' }}
@@ -271,8 +269,8 @@ export function Auth() {
         </div>
 
         {/* ================= FOOTER ================= */}
-        {/* mt-16: Matches the Header spacing (64px) for balance */}
-        <div className="mt-16 flex flex-col items-center opacity-70 hover:opacity-100 transition-opacity">
+        {/* INCREASED SPACING: Changed to mt-24 (96px gap) */}
+        <div className="mt-24 flex flex-col items-center opacity-70 hover:opacity-100 transition-opacity">
           <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-slate-500 mb-3">
             Powered by
           </p>
