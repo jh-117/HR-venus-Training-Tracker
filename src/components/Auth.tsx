@@ -77,59 +77,60 @@ export function Auth() {
 
   return (
     <>
-      <div className="min-h-screen bg-slate-950 flex items-center justify-center p-4">
+      <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-center p-6">
         <BackgroundMusic src={themeMusic} />
         
-        {/* Force a standard 400px width and ignore global container settings */}
-        <div className="w-full" style={{ maxWidth: '400px' }}>
+        <div className="w-full flex flex-col items-center" style={{ maxWidth: '420px' }}>
           
-          {/* Header Section - Larger text restored */}
-          <div className="text-center mb-10">
-            <div className="flex justify-center mb-4">
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-600/20 text-blue-500 shadow-lg shadow-blue-500/10">
-                <Folder className="h-8 w-8" />
+          {/* Branding Header - Significantly Enlarged */}
+          <div className="text-center mb-12 w-full">
+            <div className="flex justify-center mb-6">
+              <div className="p-4 rounded-2xl bg-blue-600/10 border border-blue-500/20 text-blue-500 shadow-2xl shadow-blue-500/10">
+                <Folder className="h-12 w-12" strokeWidth={2.5} />
               </div>
             </div>
 
-            <h1 className="text-5xl font-black tracking-tighter text-white mb-2">
+            <h1 className="text-6xl font-black tracking-tighter text-white mb-3 flex justify-center items-center gap-1">
               Tick<span className="text-blue-500">Ready</span>
             </h1>
 
-            <p className="text-lg font-bold text-slate-400 tracking-wide">
+            <p className="text-sm font-bold text-slate-500 uppercase tracking-[0.3em]">
               Pre Training Action Tracker
             </p>
           </div>
 
-          {/* Form Card - Generous padding and spacing restored */}
-          <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8 shadow-2xl">
+          {/* Login Card */}
+          <div className="w-full bg-slate-900 border border-white/5 rounded-[2.5rem] p-10 shadow-2xl">
             <h2 className="text-2xl font-bold text-slate-100 mb-8">
               {isSignUp ? 'Create Account' : 'Welcome Back'}
             </h2>
 
             <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Email */}
               <div className="space-y-2">
-                <Label htmlFor="email" className="text-sm font-medium text-slate-300">Email Address</Label>
+                <Label htmlFor="email" className="text-sm font-semibold text-slate-400 ml-1">Email Address</Label>
                 <Input
                   id="email"
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="you@example.com"
+                  placeholder="name@company.com"
                   required
-                  className="bg-slate-950 border-slate-800 text-slate-100 h-12 px-4 focus:ring-2 focus:ring-blue-500/20"
+                  className="bg-slate-950/50 border-slate-800 text-slate-100 h-12 rounded-xl focus:ring-2 focus:ring-blue-500/20 transition-all"
                 />
               </div>
 
-              <div className="space-y-2 relative">
-                <div className="flex justify-between items-center">
-                  <Label htmlFor="password" className="text-sm font-medium text-slate-300">Password</Label>
+              {/* Password */}
+              <div className="space-y-2">
+                <div className="flex justify-between items-center px-1">
+                  <Label htmlFor="password" className="text-sm font-semibold text-slate-400">Password</Label>
                   {!isSignUp && (
                     <button
                       type="button"
                       onClick={() => setShowPasswordResetModal(true)}
-                      className="text-xs text-blue-400 hover:text-blue-300 transition-colors"
+                      className="text-xs font-bold text-blue-500 hover:text-blue-400 transition-colors"
                     >
-                      Forgot?
+                      Forgot Password?
                     </button>
                   )}
                 </div>
@@ -142,7 +143,7 @@ export function Auth() {
                     placeholder="••••••••"
                     required
                     minLength={6}
-                    className="bg-slate-950 border-slate-800 text-slate-100 h-12 px-4 pr-12 focus:ring-2 focus:ring-blue-500/20"
+                    className="bg-slate-950/50 border-slate-800 text-slate-100 h-12 pr-12 rounded-xl focus:ring-2 focus:ring-blue-500/20 transition-all"
                   />
                   <button
                     type="button"
@@ -154,59 +155,63 @@ export function Auth() {
                 </div>
               </div>
 
+              {/* Security - Sign Up Only */}
               {isSignUp && (
-                <div className="space-y-6 animate-in fade-in slide-in-from-top-2">
+                <div className="space-y-6 pt-2 animate-in fade-in slide-in-from-top-4 duration-300">
                   <div className="space-y-2">
-                    <Label className="text-sm font-medium text-slate-300">Security Question</Label>
+                    <Label className="text-sm font-semibold text-slate-400 ml-1">Security Question</Label>
                     <Input
                       value={securityQuestion}
                       onChange={(e) => setSecurityQuestion(e.target.value)}
                       placeholder="e.g. Your first car?"
                       required
-                      className="bg-slate-950 border-slate-800 text-slate-100 h-12"
+                      className="bg-slate-950/50 border-slate-800 text-slate-100 h-12 rounded-xl"
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label className="text-sm font-medium text-slate-300">Security Answer</Label>
+                    <Label className="text-sm font-semibold text-slate-400 ml-1">Answer</Label>
                     <Input
                       value={securityAnswer}
                       onChange={(e) => setSecurityAnswer(e.target.value)}
-                      placeholder="Your answer"
+                      placeholder="Your secret answer"
                       required
-                      className="bg-slate-950 border-slate-800 text-slate-100 h-12"
+                      className="bg-slate-950/50 border-slate-800 text-slate-100 h-12 rounded-xl"
                     />
                   </div>
-                  <div className="flex items-start gap-3 pt-2">
+                  <div className="flex items-start gap-3 px-1">
                     <input
                       id="pdpaConsent"
                       type="checkbox"
                       checked={pdpaConsent}
                       onChange={(e) => setPdpaConsent(e.target.checked)}
-                      className="mt-1 w-5 h-5 rounded border-slate-700 bg-slate-950 text-blue-600 focus:ring-blue-500/20"
+                      className="mt-1 w-5 h-5 rounded border-slate-700 bg-slate-950 text-blue-600 focus:ring-offset-slate-900"
                     />
                     <label htmlFor="pdpaConsent" className="text-xs text-slate-400 leading-relaxed">
-                      I agree to the <button type="button" onClick={() => setShowPDPAModal(true)} className="text-blue-400 hover:underline">Privacy Policy</button> and consent to data collection.
+                      I agree to the <button type="button" onClick={() => setShowPDPAModal(true)} className="text-blue-500 font-bold hover:underline">Privacy Policy</button>
                     </label>
                   </div>
                 </div>
               )}
 
+              {/* Alerts */}
               {(error || message) && (
-                <div className={`p-4 rounded-xl border text-sm font-medium ${error ? 'bg-red-500/10 border-red-500/20 text-red-400' : 'bg-green-500/10 border-green-500/20 text-green-400'}`}>
+                <div className={`p-4 rounded-xl border text-sm font-bold ${error ? 'bg-red-500/10 border-red-500/20 text-red-400' : 'bg-green-500/10 border-green-500/20 text-green-400'}`}>
                   {error || message}
                 </div>
               )}
 
+              {/* Submit Button */}
               <Button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold h-12 text-lg rounded-xl shadow-xl shadow-blue-600/20 transition-all active:scale-[0.98]"
+                className="w-full bg-blue-600 hover:bg-blue-500 text-white font-black h-14 text-xl rounded-2xl shadow-xl shadow-blue-600/20 transition-all active:scale-[0.98] mt-4"
               >
-                {loading ? 'Processing...' : isSignUp ? 'Create Account' : 'Sign In'}
+                {loading ? 'Processing...' : isSignUp ? 'Sign Up' : 'Sign In'}
               </Button>
             </form>
 
-            <div className="mt-8 text-center">
+            {/* Toggle Sign-in/up */}
+            <div className="mt-10 text-center">
               <button
                 type="button"
                 onClick={() => {
@@ -214,17 +219,21 @@ export function Auth() {
                   setError('')
                   setMessage('')
                 }}
-                className="text-sm font-medium text-slate-400 hover:text-white transition-colors"
+                className="text-sm font-bold text-slate-500 hover:text-slate-300 transition-colors uppercase tracking-widest"
               >
-                {isSignUp ? 'Already have an account? Sign in' : "Don't have an account? Sign up"}
+                {isSignUp ? 'Already have an account? Sign In' : "No account? Create one"}
               </button>
             </div>
           </div>
 
-          {/* Powered by Section */}
-          <div className="mt-10 flex flex-col items-center opacity-60 hover:opacity-100 transition-opacity">
-            <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-slate-500 mb-3">Powered by</p>
-            <img src={kadoshLogo} alt="Kadosh AI" className="h-7 brightness-110" />
+          {/* Footer Logo */}
+          <div className="mt-12 flex flex-col items-center">
+            <p className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-600 mb-4">Powered by</p>
+            <img 
+              src={kadoshLogo} 
+              alt="Kadosh AI" 
+              className="h-7 opacity-30 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 duration-500" 
+            />
           </div>
         </div>
       </div>
