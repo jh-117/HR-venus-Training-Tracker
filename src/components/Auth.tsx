@@ -80,7 +80,7 @@ export function Auth() {
     <>
       <div className="min-h-screen bg-slate-950 flex items-center justify-center p-4">
         <BackgroundMusic src={themeMusic} />
-        <div className="w-full max-w-sm">
+       <div className="w-full max-w-[360px]">
           {/* Header */}
           <div className="text-center mb-8">
             <div className="flex justify-center mb-3">
