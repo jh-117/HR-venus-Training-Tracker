@@ -82,7 +82,7 @@ export function Auth() {
         <BackgroundMusic src={themeMusic} />
         <div className="w-full max-w-sm">
           {/* Header */}
-          <div className="text-center mb-6">
+          <div className="text-center mb-8">
             <div className="flex justify-center mb-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600/20 text-blue-500">
                 <Folder className="h-11 w-11" />
