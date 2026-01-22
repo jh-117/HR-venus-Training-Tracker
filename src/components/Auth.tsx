@@ -3,14 +3,14 @@ import { Button } from './ui/button'
 import { Input } from './ui/input'
 import { Label } from './ui/label'
 import { useAuth } from '../contexts/AuthContext'
-import { Folder } from 'lucide-react'
+import { Folder, Eye, EyeOff } from 'lucide-react'
 import kadoshLogo from '../assets/kadoshAI.png'
 import { PDPAModal } from './PDPAModel'
+import { PasswordResetModal } from './PasswordResetModal'
 import BackgroundMusic from './BackgroundMusic';
 import themeMusic from '../assets/training-theme.mp3';
 
 export function Auth() {
-  // ✅ All hooks must be inside the component
   const [isSignUp, setIsSignUp] = useState(false)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -19,6 +19,10 @@ export function Auth() {
   const [message, setMessage] = useState('')
   const [pdpaConsent, setPdpaConsent] = useState(false)
   const [showPDPAModal, setShowPDPAModal] = useState(false)
+  const [showPasswordResetModal, setShowPasswordResetModal] = useState(false)
+  const [showPassword, setShowPassword] = useState(false)
+  const [securityQuestion, setSecurityQuestion] = useState('')
+  const [securityAnswer, setSecurityAnswer] = useState('')
 
   const { signIn, signUp } = useAuth()
 
@@ -35,9 +39,35 @@ export function Auth() {
         return
       }
 
-      const { error } = await signUp(email, password)
-      if (error) setError(error.message)
-      else setMessage('Check your email to confirm your account!')
+      if (!securityQuestion.trim() || !securityAnswer.trim()) {
+        setError('Security question and answer are required')
+        setLoading(false)
+        return
+      }
+
+      const { error, data } = await signUp(email, password)
+      if (error) {
+        setError(error.message)
+      } else {
+        const { supabase } = await import('../lib/supabase')
+
+        const answerHash = btoa(securityAnswer.toLowerCase().trim())
+
+        await supabase.from('profiles').insert({
+          id: data.user?.id,
+          email: email,
+          security_question: securityQuestion,
+          security_answer_hash: answerHash
+        })
+
+        setMessage('Account created successfully! You can now sign in.')
+        setTimeout(() => {
+          setIsSignUp(false)
+          setSecurityQuestion('')
+          setSecurityAnswer('')
+          setPdpaConsent(false)
+        }, 2000)
+      }
     } else {
       const { error } = await signIn(email, password)
       if (error) setError(error.message)
@@ -64,7 +94,7 @@ export function Auth() {
                 className="font-black tracking-tight text-slate-100 mb-2"
                 style={{ fontSize: 'clamp(2rem, 6vw, 4rem)' }}
               >
-                HR<span className="text-slate-300">Venus</span>
+                Tick<span className="text-slate-300">Ready</span>
               </h1>
 
               <p className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-400">
@@ -96,17 +126,70 @@ export function Auth() {
                 {/* Password */}
                 <div className="space-y-2">
                   <Label htmlFor="password" className="text-slate-200">Password</Label>
-                  <Input
-                    id="password"
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="••••••••"
-                    required
-                    minLength={6}
-                    className="bg-slate-950 border-slate-700 text-slate-100"
-                  />
+                  <div className="relative">
+                    <Input
+                      id="password"
+                      type={showPassword ? "text" : "password"}
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      placeholder="••••••••"
+                      required
+                      minLength={6}
+                      className="bg-slate-950 border-slate-700 text-slate-100 pr-10"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword(!showPassword)}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-300"
+                    >
+                      {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                    </button>
+                  </div>
                 </div>
+
+                {/* Security Question - Only for Sign Up */}
+                {isSignUp && (
+                  <>
+                    <div className="space-y-2">
+                      <Label htmlFor="securityQuestion" className="text-slate-200">Security Question</Label>
+                      <Input
+                        id="securityQuestion"
+                        type="text"
+                        value={securityQuestion}
+                        onChange={(e) => setSecurityQuestion(e.target.value)}
+                        placeholder="e.g., What is your favorite color?"
+                        required
+                        className="bg-slate-950 border-slate-700 text-slate-100"
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="securityAnswer" className="text-slate-200">Security Answer</Label>
+                      <Input
+                        id="securityAnswer"
+                        type="text"
+                        value={securityAnswer}
+                        onChange={(e) => setSecurityAnswer(e.target.value)}
+                        placeholder="Your answer"
+                        required
+                        className="bg-slate-950 border-slate-700 text-slate-100"
+                      />
+                    </div>
+                  </>
+                )}
+
+                {/* Forgot Password - Only for Sign In */}
+                {!isSignUp && (
+                  <div className="text-right">
+                    <button
+                      type="button"
+                      onClick={() => setShowPasswordResetModal(true)}
+                      className="text-sm text-blue-400 hover:text-blue-300"
+                    >
+                      Forgot Password?
+                    </button>
+                  </div>
+                )}
 
                 {/* PDPA / Privacy consent */}
                 {isSignUp && (
@@ -165,6 +248,8 @@ export function Auth() {
                     setError('')
                     setMessage('')
                     setPdpaConsent(false)
+                    setSecurityQuestion('')
+                    setSecurityAnswer('')
                   }}
                   className="text-sm text-slate-400 hover:text-slate-300"
                 >
@@ -188,6 +273,9 @@ export function Auth() {
 
       {/* PDPA Modal */}
       <PDPAModal isOpen={showPDPAModal} onClose={() => setShowPDPAModal(false)} />
+
+      {/* Password Reset Modal */}
+      <PasswordResetModal isOpen={showPasswordResetModal} onClose={() => setShowPasswordResetModal(false)} />
     </>
   )
 }
