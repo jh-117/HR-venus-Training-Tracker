@@ -8,7 +8,6 @@ import {
   Siren,
   Archive,
   Trash2,
-  User,
   MoreVertical,
 } from "lucide-react";
 import {
@@ -26,7 +25,6 @@ import {
   DialogTitle,
   DialogDescription,
 } from "./ui/dialog";
-import { UserProfile } from './UserProfile';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -93,7 +91,6 @@ export function Dashboard({
   onDeleteActivity,
 }: DashboardProps) {
   const [isChoiceDialogOpen, setIsChoiceDialogOpen] = useState(false);
-  const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [showArchived, setShowArchived] = useState(false);
   const critical = getMostCriticalTask(activities);
 
@@ -128,18 +125,6 @@ export function Dashboard({
             <h1 className="text-lg font-bold leading-none">TickReady</h1>
             <p className="text-xs text-slate-400">Training Action Tracker</p>
           </div>
-        </div>
-
-        <div className="flex items-center gap-2">
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => setIsProfileOpen(true)}
-            className="text-slate-400 hover:text-white"
-          >
-            <User className="h-4 w-4 mr-2" />
-            Profile
-          </Button>
         </div>
       </header>
 
@@ -464,9 +449,6 @@ export function Dashboard({
           </div>
         </DialogContent>
       </Dialog>
-
-      {/* User Profile Modal */}
-      <UserProfile isOpen={isProfileOpen} onClose={() => setIsProfileOpen(false)} />
     </div>
   );
 }
