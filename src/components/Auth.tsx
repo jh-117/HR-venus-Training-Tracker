@@ -77,9 +77,9 @@ export function Auth() {
 
   // --- REFINED STYLES ---
   const styles = {
-    // FIX: Increased width to 480px to prevent "squeezing" when we add padding
+    // Keep width at 520px to allow inner padding without squeezing inputs
     card: {
-      width: '480px', 
+      width: '520px', 
       borderRadius: '40px',
     },
     pillInput: {
@@ -100,7 +100,8 @@ export function Auth() {
         <div className="flex flex-col items-center justify-center w-full">
           
           {/* ================= HEADER ================= */}
-          <div className="text-center mb-20 flex flex-col items-center">
+          {/* INCREASED SPACING: Changed mb-16 to mb-24 (approx 6rem/96px gap) */}
+          <div className="text-center mb-24 flex flex-col items-center">
             <div 
               className="flex h-28 w-28 items-center justify-center bg-blue-600/20 text-blue-500 shadow-xl shadow-blue-500/10 mb-6"
               style={{ borderRadius: '35px' }}
@@ -119,8 +120,7 @@ export function Auth() {
 
           {/* ================= CARD ================= */}
           <div 
-            // FIX: Uses p-12 (48px) for large gap between edge and words, 
-            // but because width is 480px, the inputs stay wide.
+            // PADDING: p-14 keeps the "inner box" well separated from the "outer box"
             className="bg-slate-900 border border-slate-800 p-14 shadow-2xl relative overflow-hidden flex flex-col"
             style={styles.card}
           >
