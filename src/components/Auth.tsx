@@ -48,53 +48,44 @@ export function Auth() {
 
   return (
     <>
-      <div className="min-h-screen bg-slate-950 flex flex-col" style={{ maxWidth: '100% !important', overflowX: 'hidden !important' }}>
+      <div className="min-h-screen bg-slate-950 flex flex-col">
         <BackgroundMusic src={themeMusic} />
-        <div className="flex-1 flex items-center justify-center p-4" style={{ maxWidth: '100% !important' }}>
-          {/* Force narrow container */}
-          <div className="w-[320px] !max-w-[320px] !important" style={{ width: '320px !important', maxWidth: '320px !important' }}>
+        <div className="flex-1 flex items-center justify-center p-4">
+          {/* Medium width container - 360px */}
+          <div className="w-full" style={{ maxWidth: '360px' }}>
             {/* Header */}
-            <div className="text-center mb-4 !important" style={{ marginBottom: '1rem !important' }}>
-              <div className="flex justify-center mb-2" style={{ marginBottom: '0.5rem !important' }}>
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600/20 text-blue-500" style={{ height: '2rem !important', width: '2rem !important' }}>
-                  <Folder className="h-9 w-9" style={{ height: '1.5rem !important', width: '1.5rem !important' }} />
+            <div className="text-center mb-6">
+              <div className="flex justify-center mb-3">
+                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-600/20 text-blue-500">
+                  <Folder className="h-6 w-6" />
                 </div>
               </div>
 
               <h1
-                className="font-black tracking-tight text-slate-100 mb-1"
-                style={{ 
-                  fontSize: '1.75rem !important',
-                  marginBottom: '0.25rem !important',
-                  lineHeight: '1.2 !important'
-                }}
+                className="font-black tracking-tight text-slate-100 mb-2"
+                style={{ fontSize: '2rem' }}
               >
                 HR<span className="text-slate-300">Venus</span>
               </h1>
 
-              <p className="text-sm font-bold text-slate-400" style={{ fontSize: '0.875rem !important' }}>
+              <p className="text-lg font-bold text-slate-400">
                 Pre Training Action Tracker
               </p>
             </div>
 
-            {/* Auth Form - FORCE narrow width */}
+            {/* Auth Form - Medium width */}
             <div 
-              className="bg-slate-900 border border-slate-800 rounded-xl p-4 shadow-xl"
-              style={{ 
-                width: '320px !important',
-                maxWidth: '320px !important',
-                padding: '1rem !important',
-                borderRadius: '0.75rem !important'
-              }}
+              className="bg-slate-900 border border-slate-800 rounded-xl p-5 shadow-xl"
+              style={{ width: '100%' }}
             >
-              <h2 className="text-base font-bold text-slate-100 mb-3" style={{ fontSize: '1rem !important', marginBottom: '0.75rem !important' }}>
+              <h2 className="text-lg font-bold text-slate-100 mb-4">
                 {isSignUp ? 'Create Account' : 'Welcome Back'}
               </h2>
 
-              <form onSubmit={handleSubmit} className="space-y-3" style={{ gap: '0.75rem !important' }}>
+              <form onSubmit={handleSubmit} className="space-y-4">
                 {/* Email */}
-                <div className="space-y-1" style={{ gap: '0.25rem !important' }}>
-                  <Label htmlFor="email" className="text-slate-200 text-xs" style={{ fontSize: '0.75rem !important' }}>Email</Label>
+                <div className="space-y-2">
+                  <Label htmlFor="email" className="text-slate-200 text-sm">Email</Label>
                   <Input
                     id="email"
                     type="email"
@@ -102,18 +93,14 @@ export function Auth() {
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="you@example.com"
                     required
-                    className="bg-slate-950 border-slate-700 text-slate-100 text-sm h-8"
-                    style={{ 
-                      fontSize: '0.875rem !important',
-                      height: '2rem !important',
-                      padding: '0.5rem !important'
-                    }}
+                    className="bg-slate-950 border-slate-700 text-slate-100 text-sm h-10"
+                    style={{ fontSize: '0.875rem' }}
                   />
                 </div>
 
                 {/* Password with eye icon */}
-                <div className="space-y-1" style={{ gap: '0.25rem !important' }}>
-                  <Label htmlFor="password" className="text-slate-200 text-xs" style={{ fontSize: '0.75rem !important' }}>Password</Label>
+                <div className="space-y-2">
+                  <Label htmlFor="password" className="text-slate-200 text-sm">Password</Label>
                   <div className="relative">
                     <Input
                       id="password"
@@ -123,24 +110,19 @@ export function Auth() {
                       placeholder="••••••••"
                       required
                       minLength={6}
-                      className="bg-slate-950 border-slate-700 text-slate-100 pr-10 text-sm h-8"
-                      style={{ 
-                        fontSize: '0.875rem !important',
-                        height: '2rem !important',
-                        padding: '0.5rem 2.5rem 0.5rem 0.5rem !important'
-                      }}
+                      className="bg-slate-950 border-slate-700 text-slate-100 pr-10 text-sm h-10"
+                      style={{ fontSize: '0.875rem' }}
                     />
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-2 top-1/2 transform -translate-y-1/2 text-slate-400 hover:text-slate-300"
-                      style={{ right: '0.5rem !important' }}
+                      className="absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-400 hover:text-slate-300"
                       tabIndex={-1}
                     >
                       {showPassword ? (
-                        <EyeOff className="h-3 w-3" style={{ height: '0.75rem !important', width: '0.75rem !important' }} />
+                        <EyeOff className="h-4 w-4" />
                       ) : (
-                        <Eye className="h-3 w-3" style={{ height: '0.75rem !important', width: '0.75rem !important' }} />
+                        <Eye className="h-4 w-4" />
                       )}
                     </button>
                   </div>
@@ -148,27 +130,21 @@ export function Auth() {
 
                 {/* PDPA / Privacy consent */}
                 {isSignUp && (
-                  <div className="flex items-start gap-2 mt-1" style={{ gap: '0.5rem !important', marginTop: '0.25rem !important' }}>
+                  <div className="flex items-start gap-3 mt-2">
                     <input
                       id="pdpaConsent"
                       type="checkbox"
                       checked={pdpaConsent}
                       onChange={(e) => setPdpaConsent(e.target.checked)}
-                      className="mt-0 w-3 h-3 rounded border-slate-600 bg-slate-900 text-blue-600 focus:ring-blue-600 cursor-pointer"
-                      style={{ 
-                        marginTop: '0 !important',
-                        height: '0.75rem !important',
-                        width: '0.75rem !important'
-                      }}
+                      className="mt-0.5 w-4 h-4 rounded border-slate-600 bg-slate-900 text-blue-600 focus:ring-blue-600 cursor-pointer"
                     />
 
-                    <label htmlFor="pdpaConsent" className="text-[10px] text-slate-300 leading-tight" style={{ fontSize: '0.625rem !important', lineHeight: '1.25 !important' }}>
+                    <label htmlFor="pdpaConsent" className="text-xs text-slate-300 leading-relaxed">
                       I agree to the{' '}
                       <button
                         type="button"
                         onClick={() => setShowPDPAModal(true)}
-                        className="text-blue-400 underline underline-offset-1 hover:text-blue-300 transition-colors"
-                        style={{ fontSize: '0.625rem !important' }}
+                        className="text-blue-400 underline underline-offset-2 hover:text-blue-300 transition-colors"
                       >
                         Privacy Policy
                       </button>{' '}
@@ -179,27 +155,13 @@ export function Auth() {
 
                 {/* Error / Message */}
                 {error && (
-                  <div 
-                    className="bg-red-500/10 border border-red-500/50 rounded p-2 text-red-400 text-xs"
-                    style={{ 
-                      padding: '0.5rem !important',
-                      fontSize: '0.75rem !important',
-                      borderRadius: '0.375rem !important'
-                    }}
-                  >
+                  <div className="bg-red-500/10 border border-red-500/50 rounded-lg p-3 text-red-400 text-sm">
                     {error}
                   </div>
                 )}
 
                 {message && (
-                  <div 
-                    className="bg-green-500/10 border border-green-500/50 rounded p-2 text-green-400 text-xs"
-                    style={{ 
-                      padding: '0.5rem !important',
-                      fontSize: '0.75rem !important',
-                      borderRadius: '0.375rem !important'
-                    }}
-                  >
+                  <div className="bg-green-500/10 border border-green-500/50 rounded-lg p-3 text-green-400 text-sm">
                     {message}
                   </div>
                 )}
@@ -208,19 +170,14 @@ export function Auth() {
                 <Button
                   type="submit"
                   disabled={loading}
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white h-8 text-xs"
-                  style={{ 
-                    height: '2rem !important',
-                    fontSize: '0.75rem !important',
-                    padding: '0.25rem 0.75rem !important'
-                  }}
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white h-10 text-sm"
                 >
                   {loading ? 'Loading...' : isSignUp ? 'Sign Up' : 'Sign In'}
                 </Button>
               </form>
 
               {/* Switch mode */}
-              <div className="mt-3 text-center" style={{ marginTop: '0.75rem !important' }}>
+              <div className="mt-5 text-center">
                 <button
                   type="button"
                   onClick={() => {
@@ -229,8 +186,7 @@ export function Auth() {
                     setMessage('')
                     setPdpaConsent(false)
                   }}
-                  className="text-xs text-slate-400 hover:text-slate-300"
-                  style={{ fontSize: '0.75rem !important' }}
+                  className="text-sm text-slate-400 hover:text-slate-300"
                 >
                   {isSignUp ? 'Already have an account? Sign in' : "Don't have an account? Sign up"}
                 </button>
@@ -240,21 +196,12 @@ export function Auth() {
         </div>
 
         {/* Powered by section at the bottom */}
-        <div 
-          className="py-2 border-t border-slate-800 text-center bg-slate-950"
-          style={{ 
-            paddingTop: '0.5rem !important',
-            paddingBottom: '0.5rem !important'
-          }}
-        >
-          <p className="text-[10px] text-slate-400 mb-1" style={{ fontSize: '0.625rem !important', marginBottom: '0.25rem !important' }}>
-            Powered by
-          </p>
+        <div className="py-4 border-t border-slate-800 text-center bg-slate-950">
+          <p className="text-sm text-slate-400 mb-2">Powered by</p>
           <img
             src={kadoshLogo}
             alt="Kadosh AI"
-            className="mx-auto h-5"
-            style={{ height: '1.25rem !important' }}
+            className="mx-auto h-6"
           />
         </div>
       </div>
