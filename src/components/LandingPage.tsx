@@ -129,28 +129,7 @@ export function LandingPage({ onGetStarted, onPrivacyPolicyClick }: LandingPageP
             Streamline training preparation with structured tasks, visibility, and real-time progress.
           </p>
 
-          <Button
-            size="lg"
-            onClick={onGetStarted}
-            style={{
-              background: 'linear-gradient(to right, #3b82f6, #6366f1)',
-              color: '#ffffff',
-              boxShadow: '0 20px 25px -5px rgba(59, 130, 246, 0.3)',
-              fontSize: '1.125rem',
-              fontWeight: '600',
-              paddingLeft: '3rem',
-              paddingRight: '3rem',
-              paddingTop: '1.75rem',
-              paddingBottom: '1.75rem',
-              borderRadius: '0.75rem',
-              display: 'inline-flex',
-              alignItems: 'center',
-              transition: 'all 0.15s'
-            }}
-          >
-            Get Started
-            <ArrowRight style={{ marginLeft: '0.75rem', height: '1.25rem', width: '1.25rem' }} />
-          </Button>
+          
         </section>
 
         {/* FEATURES */}
